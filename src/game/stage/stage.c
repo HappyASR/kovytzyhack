@@ -172,33 +172,33 @@ const MotionFunction Stage10MotionTbl[]= { //第十关 练习模式
 
 
 short ST10F9(int Motion) {
-	return (Stage10MotionTbl[Motion]->Fix0 &0xFFFF);
+	return (Stage10MotionTbl[Motion].Fix0 &0xFFFF);
 }
 short ST10F8(int Motion) {
-	return (Stage10MotionTbl[Motion]->Time >>16);
+	return (Stage10MotionTbl[Motion].Time >>16);
 }
 void ST10F7(int Motion,int param_2) {
-	FUNC32(Stage10MotionTbl[Motion]->Func6)(param_2);
+	FUNC32(Stage10MotionTbl[Motion].Func6)(param_2);
 	return;
 }
 void ST10F6(int Motion,int param_2) {
-	FUNC32(Stage10MotionTbl[Motion]->Func5)(param_2);
+	FUNC32(Stage10MotionTbl[Motion].Func5)(param_2);
 	return;
 }
 void ST10F5(int Motion,int param_2) {
-	FUNC32(Stage10MotionTbl[Motion]->Func4)(param_2);
+	FUNC32(Stage10MotionTbl[Motion].Func4)(param_2);
 	return;
 }
 void ST10F4(int Motion) {
-	FUNC32(Stage10MotionTbl[Motion]->Func3)();
+	FUNC32(Stage10MotionTbl[Motion].Func3)();
 	return;
 }
 void ST10F3(int Motion) {
-	FUNC32(Stage10MotionTbl[Motion]->Func2)();
+	FUNC32(Stage10MotionTbl[Motion].Func2)();
 	return;
 }
 void ST10F2(int Motion) {
-	FUNC32(Stage10MotionTbl[Motion]->Func1)();
+	FUNC32(Stage10MotionTbl[Motion].Func1)();
 	return;
 }
 void ST10F1() {
@@ -209,33 +209,33 @@ void ST10F1() {
 
 
 int ST9F9(int Motion) {
-	return (Stage9MotionTbl[Motion]->fix0 &0xFFFF);
+	return (Stage9MotionTbl[Motion].Fix0 &0xFFFF);
 }
 int ST9F8(int Motion) {
-	return (Stage9MotionTbl[Motion]->Time >>16);
+	return (Stage9MotionTbl[Motion].Time >>16);
 }
 void ST9F7(int Motion,int param_2) {
-	FUNC32(Stage9MotionTbl[Motion]->Func6)(param_2);
+	FUNC32(Stage9MotionTbl[Motion].Func6)(param_2);
 	return;
 }
 void ST9F6(int Motion,int param_2) {
-	FUNC32(Stage9MotionTbl[Motion]->Func5)(param_2);
+	FUNC32(Stage9MotionTbl[Motion].Func5)(param_2);
 	return;
 }
 void ST9F5(int Motion,int param_2) {
-	FUNC32(Stage9MotionTbl[Motion]->Func4)(param_2);
+	FUNC32(Stage9MotionTbl[Motion].Func4)(param_2);
 	return;
 }
 void ST9F4(int Motion) {
-	FUNC32(Stage9MotionTbl[Motion]->Func3)();
+	FUNC32(Stage9MotionTbl[Motion].Func3)();
 	return;
 }
 void ST9F3(int Motion) {
-	FUNC32(Stage9MotionTbl[Motion]->Func2)();
+	FUNC32(Stage9MotionTbl[Motion].Func2)();
 	return;
 }
 void ST9F2(int Motion) {
-	FUNC32(Stage9MotionTbl[Motion]->Func1)();
+	FUNC32(Stage9MotionTbl[Motion].Func1)();
 	return;
 }
 void ST9F1() {
@@ -245,33 +245,33 @@ void ST9F1() {
 
 
 int ST8F9(int Motion) {
-	return (Stage8MotionTbl[Motion]->fix0 &0xFFFF);
+	return (Stage8MotionTbl[Motion].Fix0 &0xFFFF);
 }
 int ST8F8(int Motion) {
-	return (Stage8MotionTbl[Motion]->Time >>16);
+	return (Stage8MotionTbl[Motion].Time >>16);
 }
 void ST8F7(int Motion,int param_2) {
-	FUNC32(Stage8MotionTbl[Motion]->Func6)(param_2);
+	FUNC32(Stage8MotionTbl[Motion].Func6)(param_2);
 	return;
 }
 void ST8F6(int Motion,int param_2) {
-	FUNC32(Stage8MotionTbl[Motion]->Func5)(param_2);
+	FUNC32(Stage8MotionTbl[Motion].Func5)(param_2);
 	return;
 }
 void ST8F5(int Motion,int param_2) {
-	FUNC32(Stage8MotionTbl[Motion]->Func4)(param_2);
+	FUNC32(Stage8MotionTbl[Motion].Func4)(param_2);
 	return;
 }
 void ST8F4(int Motion) {
-	FUNC32(Stage8MotionTbl[Motion]->Func3)();
+	FUNC32(Stage8MotionTbl[Motion].Func3)();
 	return;
 }
 void ST8F3(int Motion) {
-	FUNC32(Stage8MotionTbl[Motion]->Func2)();
+	FUNC32(Stage8MotionTbl[Motion].Func2)();
 	return;
 }
 void ST8F2(int Motion) {
-	FUNC32(Stage8MotionTbl[Motion]->Func1)();
+	FUNC32(Stage8MotionTbl[Motion].Func1)();
 	return;
 }
 void ST8F1() {
@@ -283,33 +283,33 @@ void ST8F1() {
 
 
 int ST7F9(int Motion) {
-	return (Stage7MotionTbl[Motion]->fix0 &0xFFFF);
+	return (Stage7MotionTbl[Motion].Fix0 &0xFFFF);
 }
 int ST7F8(int Motion) {
-	return (Stage7MotionTbl[Motion]->Time >>16);
+	return (Stage7MotionTbl[Motion].Time >>16);
 }
 void ST7F7(int Motion,int param_2) {
-	FUNC32(Stage7MotionTbl[Motion]->Func6)(param_2);
+	FUNC32(Stage7MotionTbl[Motion].Func6)(param_2);
 	return;
 }
 void ST7F6(int Motion,int param_2) {
-	FUNC32(Stage7MotionTbl[Motion]->Func5)(param_2);
+	FUNC32(Stage7MotionTbl[Motion].Func5)(param_2);
 	return;
 }
 void ST7F5(int Motion,int param_2) {
-	FUNC32(Stage7MotionTbl[Motion]->Func4)(param_2);
+	FUNC32(Stage7MotionTbl[Motion].Func4)(param_2);
 	return;
 }
 void ST7F4(int Motion) {
-	FUNC32(Stage7MotionTbl[Motion]->Func3)();
+	FUNC32(Stage7MotionTbl[Motion].Func3)();
 	return;
 }
 void ST7F3(int Motion) {
-	FUNC32(Stage7MotionTbl[Motion]->Func2)();
+	FUNC32(Stage7MotionTbl[Motion].Func2)();
 	return;
 }
 void ST7F2(int Motion) {
-	FUNC32(Stage7MotionTbl[Motion]->Func1)();
+	FUNC32(Stage7MotionTbl[Motion].Func1)();
 	return;
 }
 void ST7F1() {
@@ -322,33 +322,33 @@ void ST7F1() {
 
 
 int ST6F9(int Motion) {
-	return (Stage6MotionTbl[Motion]->fix0 &0xFFFF);
+	return (Stage6MotionTbl[Motion].Fix0 &0xFFFF);
 }
 int ST6F8(int Motion) {
-	return (Stage6MotionTbl[Motion]->Time >>16);
+	return (Stage6MotionTbl[Motion].Time >>16);
 }
 void ST6F7(int Motion,int param_2) {
-	FUNC32(Stage6MotionTbl[Motion]->Func6)(param_2);
+	FUNC32(Stage6MotionTbl[Motion].Func6)(param_2);
 	return;
 }
 void ST6F6(int Motion,int param_2) {
-	FUNC32(Stage6MotionTbl[Motion]->Func5)(param_2);
+	FUNC32(Stage6MotionTbl[Motion].Func5)(param_2);
 	return;
 }
 void ST6F5(int Motion,int param_2) {
-	FUNC32(Stage6MotionTbl[Motion]->Func4)(param_2);
+	FUNC32(Stage6MotionTbl[Motion].Func4)(param_2);
 	return;
 }
 void ST6F4(int Motion) {
-	FUNC32(Stage6MotionTbl[Motion]->Func3)();
+	FUNC32(Stage6MotionTbl[Motion].Func3)();
 	return;
 }
 void ST6F3(int Motion) {
-	FUNC32(Stage6MotionTbl[Motion]->Func2)();
+	FUNC32(Stage6MotionTbl[Motion].Func2)();
 	return;
 }
 void ST6F2(int Motion) {
-	FUNC32(Stage6MotionTbl[Motion]->Func1)();
+	FUNC32(Stage6MotionTbl[Motion].Func1)();
 	return;
 }
 void ST6F1() {
@@ -359,33 +359,33 @@ void ST6F1() {
 
 
 int ST5F9(int Motion) {
-	return (Stage5MotionTbl[Motion]->fix0 &0xFFFF);
+	return (Stage5MotionTbl[Motion].Fix0 &0xFFFF);
 }
 int ST5F8(int Motion) {
-	return (Stage5MotionTbl[Motion]->Time >>16);
+	return (Stage5MotionTbl[Motion].Time >>16);
 }
 void ST5F7(int Motion,int param_2) {
-	FUNC32(Stage5MotionTbl[Motion]->Func6)(param_2);
+	FUNC32(Stage5MotionTbl[Motion].Func6)(param_2);
 	return;
 }
 void ST5F6(int Motion,int param_2) {
-	FUNC32(Stage5MotionTbl[Motion]->Func5)(param_2);
+	FUNC32(Stage5MotionTbl[Motion].Func5)(param_2);
 	return;
 }
 void ST5F5(int Motion,int param_2) {
-	FUNC32(Stage5MotionTbl[Motion]->Func4)(param_2);
+	FUNC32(Stage5MotionTbl[Motion].Func4)(param_2);
 	return;
 }
 void ST5F4(int Motion) {
-	FUNC32(Stage5MotionTbl[Motion]->Func3)();
+	FUNC32(Stage5MotionTbl[Motion].Func3)();
 	return;
 }
 void ST5F3(int Motion) {
-	FUNC32(Stage5MotionTbl[Motion]->Func2)();
+	FUNC32(Stage5MotionTbl[Motion].Func2)();
 	return;
 }
 void ST5F2(int Motion) {
-	FUNC32(Stage5MotionTbl[Motion]->Func1)();
+	FUNC32(Stage5MotionTbl[Motion].Func1)();
 	return;
 }
 void ST5F1() {
@@ -405,33 +405,33 @@ void ST5F1() {
 
 
 int ST4F9(int Motion) {
-	return (Stage4MotionTbl[Motion]->fix0 &0xFFFF);
+	return (Stage4MotionTbl[Motion].Fix0 &0xFFFF);
 }
 int ST4F8(int Motion) {
-	return (Stage4MotionTbl[Motion]->Time >>16);
+	return (Stage4MotionTbl[Motion].Time >>16);
 }
 void ST4F7(int Motion,int param_2) {
-	FUNC32(Stage4MotionTbl[Motion]->Func6)(param_2);
+	FUNC32(Stage4MotionTbl[Motion].Func6)(param_2);
 	return;
 }
 void ST4F6(int Motion,int param_2) {
-	FUNC32(Stage4MotionTbl[Motion]->Func5)(param_2);
+	FUNC32(Stage4MotionTbl[Motion].Func5)(param_2);
 	return;
 }
 void ST4F5(int Motion,int param_2) {
-	FUNC32(Stage4MotionTbl[Motion]->Func4)(param_2);
+	FUNC32(Stage4MotionTbl[Motion].Func4)(param_2);
 	return;
 }
 void ST4F4(int Motion) {
-	FUNC32(Stage4MotionTbl[Motion]->Func3)();
+	FUNC32(Stage4MotionTbl[Motion].Func3)();
 	return;
 }
 void ST4F3(int Motion) {
-	FUNC32(Stage4MotionTbl[Motion]->Func2)();
+	FUNC32(Stage4MotionTbl[Motion].Func2)();
 	return;
 }
 void ST4F2(int Motion) {
-	FUNC32(Stage4MotionTbl[Motion]->Func1)();
+	FUNC32(Stage4MotionTbl[Motion].Func1)();
 	return;
 }
 void ST4F1() {
@@ -443,33 +443,33 @@ void ST4F1() {
 
 
 int ST3F9(int Motion) {
-	return (Stage3MotionTbl[Motion]->fix0 &0xFFFF);
+	return (Stage3MotionTbl[Motion].Fix0 &0xFFFF);
 }
 int ST3F8(int Motion) {
-	return (Stage3MotionTbl[Motion]->Time >>16);
+	return (Stage3MotionTbl[Motion].Time >>16);
 }
 void ST3F7(int Motion,int param_2) {
-	FUNC32(Stage3MotionTbl[Motion]->Func6)(param_2);
+	FUNC32(Stage3MotionTbl[Motion].Func6)(param_2);
 	return;
 }
 void ST3F6(int Motion,int param_2) {
-	FUNC32(Stage3MotionTbl[Motion]->Func5)(param_2);
+	FUNC32(Stage3MotionTbl[Motion].Func5)(param_2);
 	return;
 }
 void ST3F5(int Motion,int param_2) {
-	FUNC32(Stage3MotionTbl[Motion]->Func4)(param_2);
+	FUNC32(Stage3MotionTbl[Motion].Func4)(param_2);
 	return;
 }
 void ST3F4(int Motion) {
-	FUNC32(Stage3MotionTbl[Motion]->Func3)();
+	FUNC32(Stage3MotionTbl[Motion].Func3)();
 	return;
 }
 void ST3F3(int Motion) {
-	FUNC32(Stage3MotionTbl[Motion]->Func2)();
+	FUNC32(Stage3MotionTbl[Motion].Func2)();
 	return;
 }
 void ST3F2(int Motion) {
-	FUNC32(Stage3MotionTbl[Motion]->Func1)();
+	FUNC32(Stage3MotionTbl[Motion].Func1)();
 	return;
 }
 void ST3F1() {
@@ -478,33 +478,33 @@ void ST3F1() {
 }
 
 int ST2F9(int Motion) {
-	return (Stage2MotionTbl[Motion]->fix0 &0xFFFF);
+	return (Stage2MotionTbl[Motion].Fix0 &0xFFFF);
 }
 int ST2F8(int Motion) {
-	return (Stage2MotionTbl[Motion]->Time >>16);
+	return (Stage2MotionTbl[Motion].Time >>16);
 }
 void ST2F7(int Motion,int param_2) {
-	FUNC32(Stage2MotionTbl[Motion]->Func6)(param_2);
+	FUNC32(Stage2MotionTbl[Motion].Func6)(param_2);
 	return;
 }
 void ST2F6(int Motion,int param_2) {
-	FUNC32(Stage2MotionTbl[Motion]->Func5)(param_2);
+	FUNC32(Stage2MotionTbl[Motion].Func5)(param_2);
 	return;
 }
 void ST2F5(int Motion,int param_2) {
-	FUNC32(Stage2MotionTbl[Motion]->Func4)(param_2);
+	FUNC32(Stage2MotionTbl[Motion].Func4)(param_2);
 	return;
 }
 void ST2F4(int Motion) {
-	FUNC32(Stage2MotionTbl[Motion]->Func3)();
+	FUNC32(Stage2MotionTbl[Motion].Func3)();
 	return;
 }
 void ST2F3(int Motion) {
-	FUNC32(Stage2MotionTbl[Motion]->Func2)();
+	FUNC32(Stage2MotionTbl[Motion].Func2)();
 	return;
 }
 void ST2F2(int Motion) {
-	FUNC32(Stage2MotionTbl[Motion]->Func1)();
+	FUNC32(Stage2MotionTbl[Motion].Func1)();
 	return;
 }
 void ST2F1() {
@@ -514,33 +514,33 @@ void ST2F1() {
 }
 
 int ST1F9(int Motion) {
-	return (Stage1MotionTbl[Motion]->fix0 &0xFFFF);
+	return (Stage1MotionTbl[Motion].Fix0 &0xFFFF);
 }
 int ST1F8(int Motion) {
-	return (Stage1MotionTbl[Motion]->Time >>16);
+	return (Stage1MotionTbl[Motion].Time >>16);
 }
 void ST1F7(int Motion,int param_2) {
-	FUNC32(Stage1MotionTbl[Motion]->Func6)(param_2);
+	FUNC32(Stage1MotionTbl[Motion].Func6)(param_2);
 	return;
 }
 void ST1F6(int Motion,int param_2) {
-	FUNC32(Stage1MotionTbl[Motion]->Func5)(param_2);
+	FUNC32(Stage1MotionTbl[Motion].Func5)(param_2);
 	return;
 }
 void ST1F5(int Motion,int param_2) {
-	FUNC32(Stage1MotionTbl[Motion]->Func4)(param_2);
+	FUNC32(Stage1MotionTbl[Motion].Func4)(param_2);
 	return;
 }
 void ST1F4(int Motion) {
-	FUNC32(Stage1MotionTbl[Motion]->Func3)();
+	FUNC32(Stage1MotionTbl[Motion].Func3)();
 	return;
 }
 void ST1F3(int Motion) {
-	FUNC32(Stage1MotionTbl[Motion]->Func2)();
+	FUNC32(Stage1MotionTbl[Motion].Func2)();
 	return;
 }
 void ST1F2(int Motion) {
-	FUNC32(Stage1MotionTbl[Motion]->Func1)();
+	FUNC32(Stage1MotionTbl[Motion].Func1)();
 	return;
 }
 void ST1F1() {
@@ -560,19 +560,3 @@ const StageFunction StageTbl[] = {
 	{sizeof(Stage9MotionTbl)/28, (int)&ST9F1, (int)&ST9F2, (int)&ST9F3, (int)&ST9F4, (int)&ST9F5, (int)&ST9F6, (int)&ST9F7, 1, (int)&ST9F8, (int)&ST9F9},//武将对战用曹操
 	{sizeof(Stage10MotionTbl)/28, (int)&ST10F1, (int)&ST10F2, (int)&ST10F3, (int)&ST10F4, (int)&ST10F5, (int)&ST10F6, (int)&ST10F7, 1, (int)&ST10F8, (int)&ST10F9}//练习模式
 };
-
-
-/*
-const int StageTbl[]= { //0x339CEA 关卡总表
-	sizeof(Stage1MotionTbl)/28, (int)&ST1F1, (int)&ST1F2, (int)&ST1F3, (int)&ST1F4, (int)&ST1F5, (int)&ST1F6, (int)&ST1F7, 1, (int)&ST1F8, (int)&ST1F9,//第一关 截江救阿斗
-	sizeof(Stage2MotionTbl)/28, (int)&ST2F1, (int)&ST2F2, (int)&ST2F3, (int)&ST2F4, (int)&ST2F5, (int)&ST2F6, (int)&ST2F7, 1, (int)&ST2F8, (int)&ST2F9,//第二关 定军斩夏侯
-	sizeof(Stage3MotionTbl)/28, (int)&ST3F1, (int)&ST3F2, (int)&ST3F3, (int)&ST3F4, (int)&ST3F5, (int)&ST3F6, (int)&ST3F7, 1, (int)&ST3F8, (int)&ST3F9,//第三关 威震汉中池
-	sizeof(Stage4MotionTbl)/28, (int)&ST4F1, (int)&ST4F2, (int)&ST4F3, (int)&ST4F4, (int)&ST4F5, (int)&ST4F6, (int)&ST4F7, 1, (int)&ST4F8, (int)&ST4F9,//第四关 大意失荆州
-	sizeof(Stage5MotionTbl)/28, (int)&ST5F1, (int)&ST5F2, (int)&ST5F3, (int)&ST5F4, (int)&ST5F5, (int)&ST5F6, (int)&ST5F7, 1, (int)&ST5F8, (int)&ST5F9,//第五关 智破八阵图
-	sizeof(Stage6MotionTbl)/28, (int)&ST6F1, (int)&ST6F2, (int)&ST6F3, (int)&ST6F4, (int)&ST6F5, (int)&ST6F6, (int)&ST6F7, 1, (int)&ST6F8, (int)&ST6F9,//第六关 血战夺荆州
-	sizeof(Stage7MotionTbl)/28, (int)&ST7F1, (int)&ST7F2, (int)&ST7F3, (int)&ST7F4, (int)&ST7F5, (int)&ST7F6, (int)&ST7F7, 1, (int)&ST7F8, (int)&ST7F9,//第七关 三国归一统
-	sizeof(Stage8MotionTbl)/28, (int)&ST8F1, (int)&ST8F2, (int)&ST8F3, (int)&ST8F4, (int)&ST8F5, (int)&ST8F6, (int)&ST8F7, 1, (int)&ST8F8, (int)&ST8F9,//武将对战用魏延
-	sizeof(Stage9MotionTbl)/28, (int)&ST9F1, (int)&ST9F2, (int)&ST9F3, (int)&ST9F4, (int)&ST9F5, (int)&ST9F6, (int)&ST9F7, 1, (int)&ST9F8, (int)&ST9F9,//武将对战用曹操
-	sizeof(Stage10MotionTbl)/28, (int)&ST10F1, (int)&ST10F2, (int)&ST10F3, (int)&ST10F4, (int)&ST10F5, (int)&ST10F6, (int)&ST10F7, 1, (int)&ST10F8, (int)&ST10F9,//练习模式
-};
-*/
