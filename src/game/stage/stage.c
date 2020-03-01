@@ -172,10 +172,10 @@ const MotionFunction Stage10MotionTbl[]= { //第十关 练习模式
 
 
 short ST10F9(int Motion) {
-	return (Stage10MotionTbl[Motion].Fix0 &0xFFFF);
+	return (Stage10MotionTbl[Motion].Fix0);
 }
 short ST10F8(int Motion) {
-	return (Stage10MotionTbl[Motion].Time >>16);
+	return (Stage10MotionTbl[Motion].Time);
 }
 void ST10F7(int Motion,int param_2) {
 	FUNC32(Stage10MotionTbl[Motion].Func6)(param_2);
@@ -209,10 +209,10 @@ void ST10F1() {
 
 
 int ST9F9(int Motion) {
-	return (Stage9MotionTbl[Motion].Fix0 &0xFFFF);
+	return (Stage9MotionTbl[Motion].Fix0);
 }
 int ST9F8(int Motion) {
-	return (Stage9MotionTbl[Motion].Time >>16);
+	return (Stage9MotionTbl[Motion].Time);
 }
 void ST9F7(int Motion,int param_2) {
 	FUNC32(Stage9MotionTbl[Motion].Func6)(param_2);
@@ -245,10 +245,10 @@ void ST9F1() {
 
 
 int ST8F9(int Motion) {
-	return (Stage8MotionTbl[Motion].Fix0 &0xFFFF);
+	return (Stage8MotionTbl[Motion].Fix0);
 }
 int ST8F8(int Motion) {
-	return (Stage8MotionTbl[Motion].Time >>16);
+	return (Stage8MotionTbl[Motion].Time);
 }
 void ST8F7(int Motion,int param_2) {
 	FUNC32(Stage8MotionTbl[Motion].Func6)(param_2);
@@ -283,10 +283,10 @@ void ST8F1() {
 
 
 int ST7F9(int Motion) {
-	return (Stage7MotionTbl[Motion].Fix0 &0xFFFF);
+	return (Stage7MotionTbl[Motion].Fix0);
 }
 int ST7F8(int Motion) {
-	return (Stage7MotionTbl[Motion].Time >>16);
+	return (Stage7MotionTbl[Motion].Time);
 }
 void ST7F7(int Motion,int param_2) {
 	FUNC32(Stage7MotionTbl[Motion].Func6)(param_2);
@@ -322,10 +322,10 @@ void ST7F1() {
 
 
 int ST6F9(int Motion) {
-	return (Stage6MotionTbl[Motion].Fix0 &0xFFFF);
+	return (Stage6MotionTbl[Motion].Fix0);
 }
 int ST6F8(int Motion) {
-	return (Stage6MotionTbl[Motion].Time >>16);
+	return (Stage6MotionTbl[Motion].Time);
 }
 void ST6F7(int Motion,int param_2) {
 	FUNC32(Stage6MotionTbl[Motion].Func6)(param_2);
@@ -359,10 +359,10 @@ void ST6F1() {
 
 
 int ST5F9(int Motion) {
-	return (Stage5MotionTbl[Motion].Fix0 &0xFFFF);
+	return (Stage5MotionTbl[Motion].Fix0);
 }
 int ST5F8(int Motion) {
-	return (Stage5MotionTbl[Motion].Time >>16);
+	return (Stage5MotionTbl[Motion].Time);
 }
 void ST5F7(int Motion,int param_2) {
 	FUNC32(Stage5MotionTbl[Motion].Func6)(param_2);
@@ -405,10 +405,10 @@ void ST5F1() {
 
 
 int ST4F9(int Motion) {
-	return (Stage4MotionTbl[Motion].Fix0 &0xFFFF);
+	return (Stage4MotionTbl[Motion].Fix0);
 }
 int ST4F8(int Motion) {
-	return (Stage4MotionTbl[Motion].Time >>16);
+	return (Stage4MotionTbl[Motion].Time);
 }
 void ST4F7(int Motion,int param_2) {
 	FUNC32(Stage4MotionTbl[Motion].Func6)(param_2);
@@ -443,10 +443,10 @@ void ST4F1() {
 
 
 int ST3F9(int Motion) {
-	return (Stage3MotionTbl[Motion].Fix0 &0xFFFF);
+	return (Stage3MotionTbl[Motion].Fix0);
 }
 int ST3F8(int Motion) {
-	return (Stage3MotionTbl[Motion].Time >>16);
+	return (Stage3MotionTbl[Motion].Time);
 }
 void ST3F7(int Motion,int param_2) {
 	FUNC32(Stage3MotionTbl[Motion].Func6)(param_2);
@@ -478,10 +478,10 @@ void ST3F1() {
 }
 
 int ST2F9(int Motion) {
-	return (Stage2MotionTbl[Motion].Fix0 &0xFFFF);
+	return (Stage2MotionTbl[Motion].Fix0);
 }
 int ST2F8(int Motion) {
-	return (Stage2MotionTbl[Motion].Time >>16);
+	return (Stage2MotionTbl[Motion].Time);
 }
 void ST2F7(int Motion,int param_2) {
 	FUNC32(Stage2MotionTbl[Motion].Func6)(param_2);
@@ -514,10 +514,10 @@ void ST2F1() {
 }
 
 int ST1F9(int Motion) {
-	return (Stage1MotionTbl[Motion].Fix0 &0xFFFF);
+	return (Stage1MotionTbl[Motion].Fix0);
 }
 int ST1F8(int Motion) {
-	return (Stage1MotionTbl[Motion].Time >>16);
+	return (Stage1MotionTbl[Motion].Time);
 }
 void ST1F7(int Motion,int param_2) {
 	FUNC32(Stage1MotionTbl[Motion].Func6)(param_2);
