@@ -1,0 +1,4 @@
+//外置A面人物分数表
+XXPATCH16PTR16(0x66400,ScoreTblA)
+//外置B面人物分数表
+XXPATCH16PTR16(0x663ce,ScoreTblB)

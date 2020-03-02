@@ -1,5 +1,5 @@
 
-//关卡总表PATCH
+//外置关卡总表PATCH
 XXPATCH16PTR32(0xa58b6,StageTbl)
 XXPATCH16PTR32(0xa5be0,StageTbl)
 XXPATCH16PTR32(0xa62da,StageTbl)
