@@ -13,8 +13,9 @@
 #### Hex编辑器推荐
 - HxD https://mh-nexus.de/en/hxd/
 
-#### 游戏论坛
-- https://www.ppxclub.com/
+#### 修改讨论
+- 论坛 https://www.ppxclub.com/
+- QQ群:972703013
 
 #### 编译步骤
 1. 下载编译环境的3个安装包，并安装好。
