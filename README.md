@@ -1,4 +1,5 @@
 ## 街机游戏 三国战纪1一统中原Hack框架
+![游戏标题画面](https://gitee.com/hackrom/kovytzyhack/raw/master/images/title.png "游戏标题画面")
 
 #### 编译环境
 - python2.7 https://www.python.org/ftp/python/2.7.12/python-2.7.12.msi
