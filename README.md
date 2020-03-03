@@ -1,21 +1,14 @@
-# kovytzyhack
-Patch For kovytzy Platform
+## 街机游戏 三国战纪1一统中原Hack框架
 
-## Dependency:
-- Python 2.7
-https://www.python.org/ftp/python/2.7.12/python-2.7.12.msi
+#### 编译环境
+- python2.7 https://www.python.org/ftp/python/2.7.12/python-2.7.12.msi
+- cmake https://cmake.org/download/
+- Prebuilt GNU toolchain for m68k-elf http://sysprogs.com/files/gnutoolchains/m68k-elf/m68k-elf-gcc4.8.0.exe
+- 以上工具打包下载 https://pan.baidu.com/s/1tjFW5EHMZfxa0xKfC7cLEg 提取码：m73h
 
-- cmake
-https://cmake.org/download/
+#### 文本编辑器推荐
+- Notepad++ https://notepad-plus-plus.org/downloads/
 
-- Prebuilt GNU toolchain for m68k-elf
-http://sysprogs.com/files/gnutoolchains/m68k-elf/m68k-elf-gcc4.8.0.exe
+#### Hex编辑器推荐
+- HxD https://mh-nexus.de/en/hxd/
 
-
-## How to build:
-- git clone https://gitee.com/hackrom/kovytzyhack.git
-- cd pgmhack
-- mkdir build
-- cd build
-- cmake .. -DCMAKE_TOOLCHAIN_FILE=../pgm.cmake -G"Unix Makefiles"
-- make -j8
