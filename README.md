@@ -22,6 +22,5 @@
 1. 从gitee下载编译文件 https://gitee.com/hackrom/kovytzyhack
 1. 运行编译文件里的build.bat进行自动编译。
 1. 编译完成会自动在根目录生成一个ytzy_v201cn_h.rom文件。
-1. 使用libkov.exe将编译好的PROM文件进行加密。
-1. 把加密后的ytzy_v201cn_o.rom放进kovytzy.zip替换原版游戏的PROM。
+1. 替换原版游戏的PROM。
 1. 运行游戏模拟器进入游戏测试。
