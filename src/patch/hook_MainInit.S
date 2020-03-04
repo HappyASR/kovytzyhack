@@ -1,0 +1,1 @@
+XXPATCH16JMP16(0xa0f12,PageWarning)

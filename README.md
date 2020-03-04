@@ -13,6 +13,9 @@
 #### Hex编辑器推荐
 - HxD https://mh-nexus.de/en/hxd/
 
+#### 68K分析工具推荐
+- Ghidra https://github.com/NationalSecurityAgency/ghidra/releases
+
 #### 修改讨论
 - 论坛 https://www.ppxclub.com/
 
