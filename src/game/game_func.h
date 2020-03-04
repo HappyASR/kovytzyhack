@@ -24,7 +24,7 @@ void arm_cmd(int CMD,int Param);
 
 #define DrawLine_001a0eb8	FUNC32(0x1a0eb8)
 
-
+#define PlaySound_001f6d34	FUNC32(0x1f6d34)
 
 
 #define ST1M2_Fsm_0081b8fe	DU8(0x81b8fe)
@@ -33,11 +33,21 @@ void arm_cmd(int CMD,int Param);
 #define LoadMapPal_00176c18 FUNC32(0x176c18)
 #define SetPal_0014ce68 FUNC32(0x14ce68)
 #define ExecFunc_0014f2c4 FUNC32(0x14f2c4)
-
-
-
+#define LoadMapBit_00176e7a FUNC32(0x176e7a)
+#define LoadMapMask_00176e0e FUNC32(0x176e0e)
+#define LoadMapPal_00176c18 FUNC32(0x176c18)
+#define CreatSObj_0016f530 FUNC32(0x16f530)
+#define SetSObj_0016f762 FUNC32(0x16f762)
+#define SetSObjPal_0016fc3e FUNC32(0x16fc3e)
+#define Print_00152cbc FUNC32(0x152cbc)
+#define ChkKeyPress_0014f962 FUNC32(0x14f962)
+#define Print_0015349c FUNC32(0x15349c)
 //******************************************************
-
+#define FUN_0019b384 FUNC32(0x19b384)
+#define FUN_0019b386 FUNC32(0x19b386)
+#define FUN_00179a04 FUNC32(0x179a04)
+#define FUN_00179a02 FUNC32(0x179a02)
+#define FUN_001e2af0 FUNC32(0x1e2af0)
 #define FUN_00192ef0 FUNC32(0x192ef0)
 #define FUN_001e3e9a FUNC32(0x1e3e9a)
 #define FUN_001a61ee FUNC32(0x1a61ee)
