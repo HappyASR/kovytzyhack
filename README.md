@@ -26,3 +26,11 @@
 1. 编译完成会自动在根目录生成一个ytzy_v201cn_h.rom文件。
 1. 替换原版游戏的PROM。
 1. 运行游戏模拟器进入游戏测试。
+
+#### 更新日志
+##### 2020-03-06
+- 修改了部分文件和文件夹的命名和分配。
+- 模拟了调试菜单界面，投币开始界面，版权页面，模式选择界面，选人界面（未完成）。
+![相关截图](https://gitee.com/hackrom/kovytzyhack/raw/master/images/030601.png "相关截图")
+![相关截图](https://gitee.com/hackrom/kovytzyhack/raw/master/images/030602.png "相关截图")
+![相关截图](https://gitee.com/hackrom/kovytzyhack/raw/master/images/030603.png "相关截图")
