@@ -1,0 +1,1 @@
+void api_delay(int frame);

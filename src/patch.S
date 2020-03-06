@@ -4,14 +4,32 @@
 
 XXEXPORT_START(dumpy)
 
+.file "src/patch/hook_MainInit.S"
+.line 0
+//warning界面函数
+
 .file "src/patch/patch_checksum.S"
 .line 0
 //去掉游戏中的暗桩
+
+.file "src/patch/patch_hook.S"
+.line 0
+//测试函数用
+//$$PATCH16JMP16(0x952ca,Hook)
+.file "src/patch/patch_scoretable.S"
+.line 0
+//外置A面人物分数表
 
 .file "src/patch/patch_stagetable.S"
 .line 0
 
 //关卡总表PATCH
+//$$PATCH16PTR32(0xa58b6,StageTbl)
+//$$PATCH16PTR32(0xa5be0,StageTbl)
+//$$PATCH16PTR32(0xa62da,StageTbl)
+//$$PATCH16PTR32(0xa65e2,StageTbl+4)
+//$$PATCH16PTR32(0xa6600,StageTbl+4)
+//$$PATCH16PTR32(0xa6994,StageTbl+28)
 
 .file "src/patch/patch_checksum.S"
 .line 1
@@ -48,6 +66,14 @@ XXEXPORT_START(dumpy)
 .file "src/patch/patch_checksum.S"
 .line 9
 	XXPATCH16(0x63150) .word 0x7200;
+
+.file "src/patch/patch_scoretable.S"
+.line 3
+	XXPATCH16PTR16(0x663ce,ScoreTblB)
+.file "src/patch/patch_scoretable.S"
+.line 1
+	XXPATCH16PTR16(0x66400,ScoreTblA)
+//外置B面人物分数表
 
 .file "src/patch/patch_checksum.S"
 .line 42
@@ -93,6 +119,9 @@ XXEXPORT_START(dumpy)
 .line 19
 	XXPATCH16(0x98c4a) .word 0x7200;
 
+.file "src/patch/hook_MainInit.S"
+.line 4
+	XXPATCH16JMP16(0x98f36,TitlePage)
 .file "src/patch/patch_checksum.S"
 .line 20
 	XXPATCH16(0x98fa8) .word 0x7200;
@@ -133,6 +162,12 @@ XXEXPORT_START(dumpy)
 .line 29
 	XXPATCH16(0xa0852) .word 0x7200;
 
+.file "src/patch/hook_MainInit.S"
+.line 1
+	XXPATCH16JMP16(0xa0f12,PageMainMenu)
+
+//titlepage界面函数
+
 .file "src/patch/patch_checksum.S"
 .line 30
 	XXPATCH16(0xa0f62) .word 0x7200;
@@ -144,30 +179,6 @@ XXEXPORT_START(dumpy)
 .file "src/patch/patch_checksum.S"
 .line 32
 	XXPATCH16(0xa543e) .word 0x7200;
-
-.file "src/patch/patch_stagetable.S"
-.line 2
-	XXPATCH16PTR32(0xa58b6,StageTbl)
-
-.file "src/patch/patch_stagetable.S"
-.line 3
-	XXPATCH16PTR32(0xa5be0,StageTbl)
-
-.file "src/patch/patch_stagetable.S"
-.line 4
-	XXPATCH16PTR32(0xa62da,StageTbl)
-
-.file "src/patch/patch_stagetable.S"
-.line 5
-	XXPATCH16PTR32(0xa65e2,StageTbl+4)
-
-.file "src/patch/patch_stagetable.S"
-.line 6
-	XXPATCH16PTR32(0xa6600,StageTbl+4)
-
-.file "src/patch/patch_stagetable.S"
-.line 7
-	XXPATCH16PTR32(0xa6994,StageTbl+28)
 
 .file "src/patch/patch_checksum.S"
 .line 33

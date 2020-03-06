@@ -42,7 +42,23 @@ void arm_cmd(int CMD,int Param);
 #define Print_00152cbc FUNC32(0x152cbc)
 #define ChkKeyPress_0014f962 FUNC32(0x14f962)
 #define Print_0015349c FUNC32(0x15349c)
+#define FightResult_001a66c2 FUNC32(0x1a66c2)
+#define InitFnt_0015280a FUNC32(0x15280a)
+#define SetFntPal_00152b92 FUNC32(0x152b92)
+
+#define CreatTimer_0014f178 FUNC32(0x14f178)
+#define FreeTimer_0014f1c6 FUNC32(0x14f1c6)
+#define ChkTimer_0014f224 FUNC32(0x14f224)
+#define SetTimer_0014f236 FUNC32(0x14f236)
+
+#define PlayMusic_00195310 FUNC32(0x195310)
+#define PalFadeIn_0014db72 FUNC32(0x14db72)
+#define SetPal_0014c2da FUNC32(0x14c2da)
+
+#define PlayEffect_0018fe24 FUNC32(0x18fe24)
 //******************************************************
+#define FUN_00173c08 FUNC32(0x173c08)
+#define FUN_0016d2f6 FUNC32(0x16d2f6)
 #define FUN_0019b384 FUNC32(0x19b384)
 #define FUN_0019b386 FUNC32(0x19b386)
 #define FUN_00179a04 FUNC32(0x179a04)
