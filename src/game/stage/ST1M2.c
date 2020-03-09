@@ -107,8 +107,8 @@ const int ST1M2RoroPtr[] = {
 void ST1M2F6(int param_1){
 	char bVar1;
 	Print(0,0,8,3,0,"ST1M2F6 a1=%X",param_1);
-	bVar1 = *(char *)(*(int *)(RoleMem + 0xde) + 1);
-	FUN_0017a936(RoleMem,(u16)bVar1 * 4 + (u16)bVar1 + 0x1a4,(u16)bVar1 * 4 + 0x11b,0,0,2,0x34);
+	bVar1 = *(char *)(*(int *)(param_1 + 0xde) + 1);
+	FUN_0017a936(param_1,(u16)bVar1 * 4 + (u16)bVar1 + 0x1a4,(u16)bVar1 * 4 + 0x11b,0xff20,0,1,0);//主角的出场动作
 	return;
 }
 
@@ -116,7 +116,7 @@ void ST1M2F5(){
 	return;
 }
 
-void ST1M2F4(){int param_1}{
+void ST1M2F4(int param_1){
 	FUN_00192ef0(param_1);
 	return;
 }
