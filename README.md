@@ -7,12 +7,6 @@
 - Prebuilt GNU toolchain for m68k-elf http://sysprogs.com/files/gnutoolchains/m68k-elf/m68k-elf-gcc4.8.0.exe
 - 以上工具打包下载 https://pan.baidu.com/s/1tjFW5EHMZfxa0xKfC7cLEg 提取码：m73h
 
-#### 文本编辑器推荐
-- Notepad++ https://notepad-plus-plus.org/downloads/
-
-#### Hex编辑器推荐
-- HxD https://mh-nexus.de/en/hxd/
-
 #### 68K分析工具推荐
 - Ghidra https://github.com/NationalSecurityAgency/ghidra/releases
 
