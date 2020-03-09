@@ -60,6 +60,7 @@ void arm_cmd(int CMD,int Param);
 #define LoadRoro_00191e7a FUNC32(0x191e7a)
 #define ExecRoRoCMD_00191fac FUNC32(0x191fac)
 #define PalFade_0014d278 FUNC32(0x14d278)
+#define SetTime_001a56e4 FUNC32(0x1a56e4)
 
 //******************************************************
 #define FUN_00173c08 FUNC32(0x173c08)

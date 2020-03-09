@@ -35,30 +35,34 @@ XXEXPORT_START(dumpy)
 
 .file "src/patch/patch_checksum.S"
 .line 3
-	XXPATCH16(0x626c4) .word 0x7200;
+	XXPATCH16(0x623b0) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 4
-	XXPATCH16(0x62926) .word 0x7200;
+	XXPATCH16(0x626c4) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 5
-	XXPATCH16(0x62b8c) .word 0x7200;
+	XXPATCH16(0x62926) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 6
-	XXPATCH16(0x62d08) .word 0x7200;
+	XXPATCH16(0x62b8c) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 7
-	XXPATCH16(0x62f34) .word 0x7200;
+	XXPATCH16(0x62d08) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 8
-	XXPATCH16(0x63084) .word 0x7200;
+	XXPATCH16(0x62f34) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 9
+	XXPATCH16(0x63084) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 10
 	XXPATCH16(0x63150) .word 0x7200;
 
 .file "src/patch/patch_scoretable.S"
@@ -70,87 +74,99 @@ XXEXPORT_START(dumpy)
 //外置B面人物分数表
 
 .file "src/patch/patch_checksum.S"
-.line 42
-	XXPATCH16(0x68bfc) .word 0x7200;
-
-.file "src/patch/patch_checksum.S"
-.line 10
+.line 11
 	XXPATCH16(0x6ca36) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
-.line 11
-	XXPATCH16(0x85134) .word 0x7200;
-
-.file "src/patch/patch_checksum.S"
 .line 12
-	XXPATCH16(0x85c16) .word 0x7200;
+	XXPATCH16(0x83e92) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 13
-	XXPATCH16(0x8d116) .word 0x7200;
+	XXPATCH16(0x85134) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 14
-	XXPATCH16(0x91c04) .word 0x7200;
+	XXPATCH16(0x85c16) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 15
-	XXPATCH16(0x973d2) .word 0x7200;
+	XXPATCH16(0x8d116) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 16
-	XXPATCH16(0x98744) .word 0x7200;
+	XXPATCH16(0x91c04) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 17
-	XXPATCH16(0x987b2) .word 0x7200;
+	XXPATCH16(0x96f86) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 18
-	XXPATCH16(0x98824) .word 0x7200;
+	XXPATCH16(0x973d2) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 19
-	XXPATCH16(0x98c4a) .word 0x7200;
+	XXPATCH16(0x97444) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 20
-	XXPATCH16(0x98fa8) .word 0x7200;
+	XXPATCH16(0x98744) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 21
-	XXPATCH16(0x9924e) .word 0x7200;
+	XXPATCH16(0x987b2) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 22
-	XXPATCH16(0x9bddc) .word 0x7200;
+	XXPATCH16(0x98824) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 23
-	XXPATCH16(0x9cc4c) .word 0x7200;
+	XXPATCH16(0x98c4a) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 24
-	XXPATCH16(0x9d804) .word 0x7200;
+	XXPATCH16(0x98fa8) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 25
-	XXPATCH16(0x9d9bc) .word 0x7200;
+	XXPATCH16(0x9924e) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 26
-	XXPATCH16(0x9eeaa) .word 0x7200;
+	XXPATCH16(0x9bddc) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 27
-	XXPATCH16(0x9fc1e) .word 0x7200;
+	XXPATCH16(0x9cc4c) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 28
-	XXPATCH16(0xa0698) .word 0x7200;
+	XXPATCH16(0x9d804) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 29
+	XXPATCH16(0x9d9bc) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 30
+	XXPATCH16(0x9eeaa) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 31
+	XXPATCH16(0x9f728) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 32
+	XXPATCH16(0x9fc1e) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 33
+	XXPATCH16(0xa0698) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 34
 	XXPATCH16(0xa0852) .word 0x7200;
 
 .file "src/patch/hook_MainInit.S"
@@ -160,16 +176,20 @@ XXEXPORT_START(dumpy)
 //titlepage界面函数
 //$$PATCH16JMP16(0x98f36,TitlePage)
 .file "src/patch/patch_checksum.S"
-.line 30
+.line 35
 	XXPATCH16(0xa0f62) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
-.line 31
+.line 36
 	XXPATCH16(0xa4d80) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
-.line 32
+.line 37
 	XXPATCH16(0xa543e) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 38
+	XXPATCH16(0xa5674) .word 0x7200;
 
 .file "src/patch/patch_stagetable.S"
 .line 2
@@ -196,177 +216,268 @@ XXEXPORT_START(dumpy)
 	XXPATCH16PTR32(0xa6994,StageTbl+28)
 
 .file "src/patch/patch_checksum.S"
-.line 33
-	XXPATCH16(0xb2704) .word 0x7200;
-
-.file "src/patch/patch_checksum.S"
-.line 34
-	XXPATCH16(0xb3090) .word 0x7200;
-
-.file "src/patch/patch_checksum.S"
-.line 35
-	XXPATCH16(0xb3682) .word 0x7200;
-
-.file "src/patch/patch_checksum.S"
-.line 36
-	XXPATCH16(0xb3d22) .word 0x7200;
-
-.file "src/patch/patch_checksum.S"
-.line 37
-	XXPATCH16(0xb40b8) .word 0x7200;
-
-.file "src/patch/patch_checksum.S"
-.line 38
-	XXPATCH16(0xb63e0) .word 0x7200;
-
-.file "src/patch/patch_checksum.S"
 .line 39
-	XXPATCH16(0xb6730) .word 0x7200;
+	XXPATCH16(0xb176c) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 40
-	XXPATCH16(0xb77cc) .word 0x7200;
+	XXPATCH16(0xb2704) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 41
-	XXPATCH16(0xb8190) .word 0x7200;
+	XXPATCH16(0xb3090) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 42
+	XXPATCH16(0xb3682) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 43
-	XXPATCH16(0xb941c) .word 0x7200;
+	XXPATCH16(0xb3d22) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 44
-	XXPATCH16(0xba1d4) .word 0x7200;
+	XXPATCH16(0xb40b8) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 45
-	XXPATCH16(0xbc988) .word 0x7200;
+	XXPATCH16(0xb5d82) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 46
-	XXPATCH16(0xbd7b6) .word 0x7200;
+	XXPATCH16(0xb63e0) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 47
-	XXPATCH16(0xc1b12) .word 0x7200;
+	XXPATCH16(0xb6730) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 48
-	XXPATCH16(0xc4d08) .word 0x7200;
+	XXPATCH16(0xb77cc) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 49
-	XXPATCH16(0xc5cfe) .word 0x7200;
+	XXPATCH16(0xb7d56) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 50
-	XXPATCH16(0xc9938) .word 0x7200;
+	XXPATCH16(0xb8190) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 51
-	XXPATCH16(0xd3e50) .word 0x7200;
+	XXPATCH16(0xb8bfc) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 52
-	XXPATCH16(0xd91e2) .word 0x7200;
+	XXPATCH16(0xb922a) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 53
-	XXPATCH16(0xdd704) .word 0x7200;
+	XXPATCH16(0xb941c) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 54
-	XXPATCH16(0xdd79e) .word 0x7200;
+	XXPATCH16(0xba1d4) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 55
-	XXPATCH16(0xde760) .word 0x7200;
+	XXPATCH16(0xbc988) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 56
-	XXPATCH16(0xe0962) .word 0x7200;
+	XXPATCH16(0xbd7b6) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 57
-	XXPATCH16(0xe09de) .word 0x7200;
+	XXPATCH16(0xbec38) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 58
-	XXPATCH16(0xe0dac) .word 0x7200;
+	XXPATCH16(0xc1b12) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 59
-	XXPATCH16(0xe0e8e) .word 0x7200;
+	XXPATCH16(0xc4d08) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 60
-	XXPATCH16(0xe0fb6) .word 0x7200;
+	XXPATCH16(0xc5202) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 61
-	XXPATCH16(0xe238e) .word 0x7200;
+	XXPATCH16(0xc5890) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 62
-	XXPATCH16(0xe2994) .word 0x7200;
+	XXPATCH16(0xc5cfe) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 63
-	XXPATCH16(0xe2b00) .word 0x7200;
+	XXPATCH16(0xc6440) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 64
-	XXPATCH16(0xe37e4) .word 0x7200;
+	XXPATCH16(0xc7e0a) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 65
-	XXPATCH16(0xe54c2) .word 0x7200;
+	XXPATCH16(0xc9938) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 66
-	XXPATCH16(0xe6746) .word 0x7200;
+	XXPATCH16(0xcbf5a) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 67
-	XXPATCH16(0xe7238) .word 0x7200;
+	XXPATCH16(0xce4e0) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 68
-	XXPATCH16(0xe94e8) .word 0x7200;
+	XXPATCH16(0xd6098) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 69
-	XXPATCH16(0xea552) .word 0x7200;
+	XXPATCH16(0xd656e) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 70
-	XXPATCH16(0xeb118) .word 0x7200;
+	XXPATCH16(0xd91e2) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 71
-	XXPATCH16(0xeb2ca) .word 0x7200;
+	XXPATCH16(0xda31c) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 72
-	XXPATCH16(0xec60a) .word 0x7200;
+	XXPATCH16(0xdd704) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 73
-	XXPATCH16(0xed782) .word 0x7200;
+	XXPATCH16(0xdd79e) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 74
-	XXPATCH16(0xef9ca) .word 0x7200;
+	XXPATCH16(0xde760) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 75
-	XXPATCH16(0xf0e76) .word 0x7200;
+	XXPATCH16(0xdf7c8) .word 0x7200;
 
 .file "src/patch/patch_checksum.S"
 .line 76
-	XXPATCH16(0xf7164) .word 0x7200;
+	XXPATCH16(0xe0380) .word 0x7200;
 
+.file "src/patch/patch_checksum.S"
+.line 77
+	XXPATCH16(0xe0760) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 78
+	XXPATCH16(0xe0962) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 79
+	XXPATCH16(0xe09de) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 80
+	XXPATCH16(0xe0dac) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 81
+	XXPATCH16(0xe0e8e) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 82
+	XXPATCH16(0xe0fb6) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 83
+	XXPATCH16(0xe2094) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 84
+	XXPATCH16(0xe238e) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 85
+	XXPATCH16(0xe2994) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 86
+	XXPATCH16(0xe2b00) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 87
+	XXPATCH16(0xe37e4) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 88
+	XXPATCH16(0xe54c2) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 89
+	XXPATCH16(0xe6746) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 90
+	XXPATCH16(0xe7238) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 91
+	XXPATCH16(0xe8fc8) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 92
+	XXPATCH16(0xe94e8) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 93
+	XXPATCH16(0xea552) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 94
+	XXPATCH16(0xeb118) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 95
+	XXPATCH16(0xeb1b8) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 96
+	XXPATCH16(0xeb2ca) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 97
+	XXPATCH16(0xec60a) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 98
+	XXPATCH16(0xed14a) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 99
+	XXPATCH16(0xed782) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 100
+	XXPATCH16(0xef9ca) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 101
+	XXPATCH16(0xefcac) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 102
+	XXPATCH16(0xefd14) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 103
+	XXPATCH16(0xf0e76) .word 0x7200;
+
+.file "src/patch/patch_checksum.S"
+.line 104
+	XXPATCH16(0xf7164) .word 0x7200;
 .file __FILE__
 .line __LINE__
 XXEXPORT_END(dumpy)
