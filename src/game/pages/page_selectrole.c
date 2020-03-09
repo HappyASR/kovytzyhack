@@ -14,58 +14,57 @@ struct HeadInfo {
 	short y;
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const char MidHeadPalID[] = {
-	 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-	10,11,12,13,14,15,16,17,18,19,
+	 0, 1, 2, 3, 4, 5, 6, 7, 10, 11,
+	12,8,13,9,14,15,16,17,18,19,
+
 };
 const char MidHeadPicID[] = {
-	 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-	10,11,12,13,14,15,16,17,18,19,
+	 0, 1, 2, 3, 4, 5, 6, 7, 10, 11,
+	12,8,13,9,14,15,16,17,18,19,
+
+};
+
+const char MidHeadFlag[] = {
+	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+
 };
 
 const int MidHeadPalPtr[] = {
-	0x26838a,0x2683ca,0x26844a,0x26848a,0x26850a,0x26860a,0x26864a,0x26858a,0x26840a,0x2684ca,
-	0x2685ca,0x26854a,0x2f28a2,0x2f2922,0x2f29a2,0x2f2ae2,0x2f2a62,0x2f2a22,0x2f2aa2,0x2f29e2,
-};
+	0x26838a,0x2683ca,0x26844a,0x26848a,0x26850a,0x26860a,0x26864a,0x26858a,0x2685ca,0x26854a,
+	0x2f28a2,0x26840a,0x2f2922,0x2684ca,0x2f29a2,0x2f2ae2,0x2f2a62,0x2f2a22,0x2f2aa2,0x2f29e2,
 
+};
+/*
 const short MidHeadPosX[] = {
 	0xff7b,0xff4e,0xff21,0xfef3,0xff7b,0xff4e,0xff21,0xfef3,0xff7b,0xff4e,
 	0xff21,0xfef3,0xff7b,0xff4e,0xff21,0xfef3,0xff7b,0xff4e,0xff21,0xfef3,
-};
+};*/
 
+const short MidHeadPosX[] = {
+	0,45,90,135,180,225,270,315,360,405,
+	0,45,90,135,180,225,270,315,360,405,
+
+};
+/*
 const short MidHeadPosY[] = {
 	0xffe9,0xffee,0xffee,0xffe9,0xffc5,0xffca,0xffca,0xffc5,0xffa1,0xffa6,
 	0xffa6,0xffa1,0xff7d,0xff82,0xff82,0xff7d,0xff59,0xff5e,0xff5e,0xff59,
 };
+*/
+const short MidHeadPosY[] = {
+	138,138,138,138,138,138,138,138,138,138,
+	168,168,168,168,168,168,168,168,168,168,
 
-
+};
 
 /*选择模式和选人*/
 //编号0-编号19色盘给小头像使用
 void PageSelectRole(int PlayerID) {
 	int i,j;
 	
-	short local_2c[20];
+	short local_2c[40];
 	short local_34[4];
 	short local_3c[4];
 	int local_48;
@@ -95,19 +94,27 @@ void PageSelectRole(int PlayerID) {
 		SetPal_0014c2da(2,MidHeadPalID[i],MidHeadPalPtr[i]);
 	}
 	for(i=0; i<20; i++) {
-		if(!PU16(0x13c3da)[i*0x11]) {
+		if(!MidHeadFlag[i]) {
 			local_38=0x2fc1fa;//脚本地址
-			iVar11 = 0x1d;
+			iVar11 = 29;//框框色盘
 		} else {
 			local_38=0x2fc202;//脚本地址
-			iVar11=0x1f;
+			iVar11 = 31;//框框色盘
 		}
-		FUN_0016b922(0,8,i + 0x12f,iVar11,0x2fc1fa,0x14,0,0x2fc21e);//画框框 
-		FUN_0016b922(-MidHeadPosX[i],8-MidHeadPosY[i],      
+		FUN_0016b922(MidHeadPosX[i]-133,MidHeadPosY[i]-23,0x12f,iVar11,0x2fc1fa,20,0,0x2fc21e);//画框框 
+		FUN_0016b922(MidHeadPosX[i],MidHeadPosY[i],      
 		             MidHeadPicID[i]+0x111,MidHeadPalID[i],local_38,
-		             0x1e,0,PU32(0x2fc21e));//最后参数是图片包地址
+		             30,0,PU32(0x2fc21e));//最后参数是图片包地址
+		 
 	}
 	//PlayEffect_0018fe24(FUN_0018fcf8(),0xf0,0,1,0x1f9a3a,0x2fc618,0);//跳动的NEW字
+
+	
+	
+	
+	
+	
+	
 	api_delay(0x14);
 	arm_cmd(0x75,0xf41);
 	arm_cmd(0xb6,2);

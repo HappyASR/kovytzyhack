@@ -3,92 +3,200 @@
 #include <string.h>
 #include "../game_type.h"
 #include "../game_func.h"
+#include "../game_api.h"
 #include "stage.h"
 
 
-void kensou()
-{
-	FUN_0014d278(0);//淡入
-	FUN_0017f854(0);//恢复角色行动
-    FUN_0017415c(1);
-	while(1){
-		ScreenUpdate_0018c492();//屏幕刷新
+
+struct RoroConfig {
+	int CMDPtr;//刷兵指针
+	int DropPtr;//掉落指针
+	char DropNum;//掉落数量
+	char Fix0;
+	short FleeTime;//逃跑时间
+	int FuncPtr;//执行函数
+};
+
+// FF 04
+// 03 ACTION TYPE
+// 01 ACTION ID
+// 00 13 05 84 ROROPTR
+// 02 5D POS X
+// 00 F6 POS Y
+// 00 00 FIX 0
+// 00 01 RORO NUMBER
+const char ST1M2RoRoCMD1[] = {
+	0xFF,0x14,0x00,0x00,
+	0xFF,0x11,0x03,0x00,//设置AI
+	0xFF,0x04,0x03,0x01,0x00,0x13,0x05,0x84,0x03,0x5D,0x00,0xF6,0x00,0x00,0x00,0x01,//3个弓箭手
+	0xFF,0x04,0x03,0x01,0x00,0x13,0x05,0x84,0x03,0x5D,0x01,0x1E,0x00,0x00,0x00,0x01,
+	0xFF,0x04,0x03,0x01,0x00,0x13,0x05,0x84,0x03,0x5D,0x01,0x46,0x00,0x00,0x00,0x01,
+	0xFF,0x11,0x01,0x00,//设置AI
+	0xFF,0x04,0x00,0x04,0x00,0x11,0x39,0xE4,0x02,0xC1,0x01,0x0A,0x00,0x00,0x00,0x01,//2个刀兵
+	0xFF,0x04,0x00,0x04,0x00,0x11,0x39,0xE4,0x02,0xC1,0x01,0x5A,0x00,0x00,0x00,0x01,
+	0xFF,0x08,0x01,0x00,//剩下1个兵再继续执行
+	0xFF,0x14,0x01,0x1E,
+	0xFF,0x11,0x00,0x00,//设置AI
+	0xFF,0x04,0x01,0x00,0x00,0x11,0x11,0xAA,0x03,0x77,0x01,0x1C,0x00,0x00,0x00,0x01,//1个枪兵
+	0xFF,0x04,0x01,0x00,0x00,0x11,0x39,0xE4,0x03,0x77,0x01,0x1C,0x00,0x00,0x00,0x02,//2个刀兵
+	0xFF,0x08,0x01,0x00,//剩下1个兵再继续执行
+	0xFF,0x04,0x01,0x00,0x00,0x11,0x39,0xE4,0x04,0x0A,0x01,0x8E,0x00,0x00,0x00,0x01,//1个枪兵
+	0xFF,0x04,0x01,0x00,0x00,0x11,0x11,0xAA,0x04,0x0A,0x01,0x8E,0x00,0x00,0x00,0x02,//2个刀兵
+	0xFF,0x08,0x00,0x00,//剩下0个兵再继续执行
+	0xFF,0x16,0x00,0x00,//结束刷兵
+};
+
+const char ST1M2RoRoCMD2[] = {
+	0xFF,0x14,0x00,0x00,
+	0xFF,0x11,0x03,0x00,
+	0xFF,0x04,0x03,0x01,0x00,0x13,0x05,0x84,0x02,0x5D,0x00,0xF6,0x00,0x00,0x00,0x01,
+	0xFF,0x04,0x03,0x01,0x00,0x13,0x05,0x84,0x02,0x5D,0x01,0x1E,0x00,0x00,0x00,0x01,
+	0xFF,0x04,0x03,0x01,0x00,0x13,0x05,0x84,0x02,0x5D,0x01,0x46,0x00,0x00,0x00,0x01,
+	0xFF,0x11,0x01,0x00,
+	0xFF,0x04,0x00,0x04,0x00,0x11,0x39,0xE4,0x02,0xC1,0x01,0x0A,0x00,0x00,0x00,0x01,
+	0xFF,0x04,0x00,0x04,0x00,0x11,0x39,0xE4,0x02,0xC1,0x01,0x32,0x00,0x00,0x00,0x01,
+	0xFF,0x04,0x00,0x04,0x00,0x11,0x39,0xE4,0x02,0xC1,0x01,0x5A,0x00,0x00,0x00,0x01,
+	0xFF,0x08,0x01,0x00,
+	0xFF,0x14,0x01,0x1E,
+	0xFF,0x11,0x00,0x00,
+	0xFF,0x04,0x01,0x00,0x00,0x11,0x11,0xAA,0x03,0x77,0x01,0x1C,0x00,0x00,0x00,0x01,
+	0xFF,0x04,0x01,0x00,0x00,0x11,0x39,0xE4,0x03,0x77,0x01,0x1C,0x00,0x00,0x00,0x03,
+	0xFF,0x08,0x01,0x00,
+	0xFF,0x04,0x01,0x00,0x00,0x11,0x39,0xE4,0x04,0x0A,0x01,0x8E,0x00,0x00,0x00,0x01,
+	0xFF,0x11,0x01,0x00,
+	0xFF,0x04,0x01,0x00,0x00,0x11,0x11,0xAA,0x04,0x0A,0x01,0x8E,0x00,0x00,0x00,0x03,
+	0xFF,0x08,0x03,0x00,
+	0xFF,0x11,0x00,0x00,
+	0xFF,0x09,0x02,0x00,
+	0xFF,0x04,0x01,0x00,0x00,0x11,0x11,0xAA,0x04,0x0A,0x01,0x8E,0x00,0x00,0x00,0x01,
+	0xFF,0x08,0x03,0x00,
+	0xFF,0x04,0x01,0x00,0x00,0x11,0x11,0xAA,0x03,0x77,0x01,0x1C,0x00,0x00,0x00,0x01,
+	0xFF,0x08,0x03,0x00,
+	0xFF,0x0A,0x00,0x00,
+	0xFF,0x08,0x00,0x00,
+	0xFF,0x16,0x00,0x00,
+};
+
+
+
+
+const char ST1M2RoroDrop1[] = {
+	0,5,0,7,0,0,0,0,0,0,0
+};
+const char ST1M2RoroDrop2[] = {
+	0,5,0,7,0,0,0,0,0,0,0,0,0,0,0,0,0
+};
+
+
+
+void ST1M2RoroFunc1() {
+	return;
+}
+
+void ST1M2RoroFunc2() {
+	return;
+}
+
+
+
+
+
+const struct RoroConfig ST1M2Roro[] = {
+	{(int)&ST1M2RoRoCMD1,(int)&ST1M2RoroDrop1,sizeof(ST1M2RoroDrop1),0,18000,(int)&ST1M2RoroFunc1},//1-2人
+	{(int)&ST1M2RoRoCMD2,(int)&ST1M2RoroDrop2,sizeof(ST1M2RoroDrop2),0,18000,(int)&ST1M2RoroFunc2},//3-4人
+};
+
+const int ST1M2RoroPtr[] = {
+	(int)&ST1M2Roro[0],//1-2人刷兵
+	(int)&ST1M2Roro[1],//3-4人刷兵
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int ST1M2F2() {
+	int iVar1;
+	uint uVar2;
+	ushort uVar3;
+	short sVar4;
+	ushort *puVar5;
+
+	switch(ST1M2_Fsm_0081b8fe) {
+	case 0:
+		uVar2 = FUN_00191fac();
+		if (uVar2 != 0) {
+			GoMessage_00196142(0,0x3dc,0x181,6,0);//GO箭头提示
+			ST1M2_Fsm_0081b8fe += 1;
+		}
+		break;
+	case 1:
+		FUN_001a56e4(0xc);
+		FUN_0019639c(0);
+		DU8(0x81b8ff) = 0;
+		uVar3 = 0;
+		while (uVar3 < 4) {
+			PU16(0x81b904)[(short)uVar3] = 0;
+			uVar3 += 1;
+		}
+		FUN_00179bac(0,1,PU32(0x1dd07a));
+		if (DU8(0x81b908) != 0) {
+			GoMessage_00196142(1,0x35d,0x113,6,0);
+			FUN_00179bac(1,2,PU32(0x1dd13a));
+			DU8(0x81b908) = 0;
+		}
+		ST1M2_Fsm_0081b8fe += 1;
+		break;
+	case 2:
+		FUN_001a56e4(0x14);
+		if ((DU8(0x81b908) != 0) && (DU8(0x81b8ff) == 0)) {
+			GoMessage_00196142(1,0x35d,0x113,6,0);
+			FUN_00179bac(1,3,PU32(0x1dd13a));
+			DU8(0x81b908) = 0;
+		}
+		FUN_001961da();
+		iVar1 = FUN_0017f474();
+		if ((iVar1 <= DU8(0x81b8ff)) && (iVar1 = FUN_0017f474(), iVar1 != 0)) {
+			ST1M2_Fsm_0081b8fe = 3;
+			iVar1 = FUN_00150e52(0x24);
+			if (iVar1 < 6) {
+				sVar4 = 0;
+				uVar2 = 0;
+				puVar5 = PU16(0x199242);
+				uVar3 = 0;
+				while (uVar2 < 0x35) {
+					sVar4 = sVar4 * 2 - *puVar5;
+					uVar3 = (*puVar5 ^ uVar3) + (short)uVar2;
+					uVar2 += 1;
+					puVar5 = puVar5 + 1;
+				}
+				if ((sVar4 != 0x2a26) || (uVar3 != 0xb60)) {
+					DU16(0x80e316) = 1;
+				}
+			}
+		}
+		break;
+	case 3:
+		FUN_00179c70(0);
+		FUN_00179c70(1);
+		FUN_00195434();
+		FUN_00191d5e();
+		FUN_0014f2c4(0x50,(int)&ScreenUpdate_0018c492);
+		return 3;//返回3就是结束场景 返回4就结束关卡
 	}
-}
-
-int ST1M2F2_001dd59c()
-{
-          int iVar1;
-          uint uVar2;
-          ushort uVar3;
-          short sVar4;
-			ushort *puVar5;
-          
-          switch(ST1M2_Fsm_0081b8fe) {
-          case 0:
-                    uVar2 = FUN_00191fac();
-                    if (uVar2 != 0) {
-                              GoMessage_00196142(0,0x3dc,0x181,6,0);//GO箭头提示
-                              ST1M2_Fsm_0081b8fe += 1;
-                    }
-                    break;
-          case 1:
-                    FUN_001a56e4(0xc);
-                    FUN_0019639c(0);
-                    DU8(0x81b8ff) = 0;
-                    uVar3 = 0;
-                    while (uVar3 < 4) {
-                              PU16(0x81b904)[(short)uVar3] = 0;
-                              uVar3 += 1;
-                    }
-                    FUN_00179bac(0,1,PU32(0x1dd07a));
-                    if (DU8(0x81b908) != 0) {
-                              GoMessage_00196142(1,0x35d,0x113,6,0);
-                              FUN_00179bac(1,2,PU32(0x1dd13a));
-                              DU8(0x81b908) = 0;
-                    }
-                    ST1M2_Fsm_0081b8fe += 1;
-                    break;
-          case 2:
-                    FUN_001a56e4(0x14);
-                    if ((DU8(0x81b908) != 0) && (DU8(0x81b8ff) == 0)) {
-                              GoMessage_00196142(1,0x35d,0x113,6,0);
-                              FUN_00179bac(1,3,PU32(0x1dd13a));
-                              DU8(0x81b908) = 0;
-                    }
-                    FUN_001961da();
-                    iVar1 = FUN_0017f474();
-                    if ((iVar1 <= DU8(0x81b8ff)) && (iVar1 = FUN_0017f474(), iVar1 != 0))
-                    {
-                              ST1M2_Fsm_0081b8fe = 3;
-                              iVar1 = FUN_00150e52(0x24);
-                              if (iVar1 < 6) {
-                                        sVar4 = 0;
-                                        uVar2 = 0;
-                                        puVar5 = PU16(0x199242);
-                                        uVar3 = 0;
-                                        while (uVar2 < 0x35) {
-                                                  sVar4 = sVar4 * 2 - *puVar5;
-                                                  uVar3 = (*puVar5 ^ uVar3) + (short)uVar2;
-                                                  uVar2 += 1;
-                                                  puVar5 = puVar5 + 1;
-                                        }
-                                        if ((sVar4 != 0x2a26) || (uVar3 != 0xb60)) {
-                                                  DU16(0x80e316) = 1;
-                                        }
-                              }
-                    }
-                    break;					
-          case 3:
-                    FUN_00179c70(0);
-                    FUN_00179c70(1);
-                    FUN_00195434();
-                    FUN_00191d5e();
-                    /* WARNING: Subroutine does not return */
-                    FUN_0014f2c4(0x50,(int)&ScreenUpdate_0018c492);
-					return 3;//返回3就是结束场景 返回4就结束关卡
-          }
-          return 0;	
+	return 0;
 }
 
 
@@ -101,88 +209,56 @@ int ST1M2F2_001dd59c()
 
 
 
-void ST1M2F1_001dd2ba()
-{
-          int iVar1;
-          uint uVar2;
-          ushort uVar3;
-		  
-          FUN_0017ed26();
-          FUN_00159e3a();
-          FUN_0017415c(0);
-          FUN_001a6284(10);
-          FUN_0017476e(1);
-          FUN_00176e7a(PU32(0x32ba10),0);
-          FUN_00176e7a(PU32(0x32d840),1);
-          FUN_001795a2(PU32(0x3d14a0),2);
-		
+void ST1M2F1() {
+	int PalID;
+	int i;
+	short OBJ;
 
-          FUN_00176e0e(PU32(0x338dfa),0,0);
-          iVar1 = FUN_00176c18(PU32(0x24574c));
-          FUN_00176fc0();
-          FUN_00177738();
-          FUN_00177302();
-          uVar3 = 0;
-          while (uVar3 < 4) {
-                    uVar2 = FUN_0016f530();
-                    uVar2 &= 0xffff;
-                    FUN_0016f762(uVar2,PU32(0x3d0b40),uVar3 * 0x70,0,0,0);
-                    FUN_00171b16(uVar2,1,DU32(0x2ffbec));//海的图层有变化
-                    FUN_00171d16(uVar2,0x1a);
-                    FUN_0016fc3e(uVar2,(char)iVar1);
-                    uVar3 += 1;
-          }		
+	FUN_0017ed26();
+	FUN_00159e3a();
+	FUN_0017415c(0);
+	FUN_001a6284(10);
+	FUN_0017476e(1);
+	LoadMapBit_00176e7a(0x32ba10,0);
+	LoadMapBit_00176e7a(0x32d840,1);
+	FUN_001795a2(PU32(0x3d14a0),2);//创建那两个喷火的机关
+	LoadMapMask_00176e0e(0x338dfa,0,0);
+	PalID = LoadMapPal_00176c18(0x24574c);
+	FUN_00176fc0();
+	FUN_00177738();
+	FUN_00177302();
+	for(i=0; i<4; i++) {
+		OBJ = FUN_0016f530();
+		SetSObj_0016f762(OBJ,0x3d0b40,i * 0x70,0,0,0);
+		FUN_00171b16(OBJ,1,DU32(0x2ffbec));
+		FUN_00171d16(OBJ,26);
+		SetSObjPal_0016fc3e(OBJ,PalID);
+	}
+	FUN_00195420();
+	FUN_00191bf4();
 
+	//FUN_00191e7a(PU32(0x14384e),0);	//载入小兵配置
+	LoadRoro_00191e7a((int)&ST1M2RoroPtr,0);
 
+	DU8(0x81b8fe) = 0;
+	for(i=0; i<9; i++)
+		ExecRoRoCMD_00191fac();
+	api_arm(0x68,0x150);
+	api_arm(0x7d,0x78);
+	FUN_0018c188();
+	ScreenUpdate_0018c492();
+	PalFade_0014d278(0);
+	FUN_00163138(0);
 
-
-          FUN_00195420();
-          FUN_00191bf4();
-		  
-					  
-		  
-		  
-		  
-		  FUN_00191e7a(PU32(0x14384e),0);	//载入小兵配置	  
-			
-		  DU8(0x81b8fe) = 0;
-
-          FUN_001dd1f6();//到这里还是正确的
-
-          DU16(0x81b274) = ((DU16(0x81b270) >> 8) | DU16(0x81b270)) ^ 0x150;
-          DU16(0x500000)=DU16(0x81b274);
-          DU16(0x81b272) = ((DU16(0x81b270) >> 8) ^ 0x13) | DU16(0x81b270);
-          DU16(0x500002)=DU16(0x81b272);		  
-		  FUN_0019adcc();
-          DU16(0x81b274) = ((DU16(0x81b270) >> 8) | DU16(0x81b270)) ^ 0x58;
-          DU16(0x500000)=DU16(0x81b274);
-          DU16(0x81b272) = ((DU16(0x81b270) >> 8) ^ 0x36 )| DU16(0x81b270);
-          DU16(0x500002)=DU16(0x81b272);		  
-		  FUN_0019adcc();	  
-          DU16(0x81b274) = ((DU16(0x81b270) >> 8) | DU16(0x81b270)) ^ 0x3f8;
-          DU16(0x500000)=DU16(0x81b274);
-          DU16(0x81b272) = ((DU16(0x81b270) >> 8) ^ 0x24 )| DU16(0x81b270);
-          DU16(0x500002)=DU16(0x81b272);		  
-		  FUN_0019adcc();
-          DU16(0x81b274) = ((DU16(0x81b270) >> 8) | DU16(0x81b270)) ^ 0x1e0;
-          DU16(0x500000)=DU16(0x81b274);
-          DU16(0x81b272) = ((DU16(0x81b270) >> 8) ^ 0x58 )| DU16(0x81b270);
-          DU16(0x500002)=DU16(0x81b272);		  
-		  FUN_0019adcc();		
-		//执行到这里以后，镜头就不受控制了
-		  //kensou();		  
-  
-		  
-          uVar2 = FUN_0016f530();
-          FUN_0016f762(uVar2 & 0xffff,PU32(0x3d0db4),0,0,0,0);
-
-	
-          FUN_0017f854(0);
-          FUN_0017415c(1);	
-		  
-          DU8(0x81b901) = 0;
-          DU8(0x81b908) = 0;
-
-
+	api_arm(0x13,0x150);
+	api_arm(0x36,0x58);
+	api_arm(0x24,0x3f8);
+	api_arm(0x58,0x1e0);
+	OBJ = FUN_0016f530();
+	FUN_0016f762(OBJ,0x3d0db4,0,0,0,0);
+	FUN_0017f854(0);
+	FUN_0017415c(1);
+	DU8(0x81b901) = 0;
+	DU8(0x81b908) = 0;
 	return;
 }

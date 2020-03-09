@@ -14,6 +14,7 @@ void PageSelectMode(int PlayerID) {
 	int i;
 	int OBJ[4];
 	int pos=0,old_pos=0,ctrl=1;
+	int a1,a2;
 
 	
 	if (FUN_001988d6()) {
@@ -48,8 +49,8 @@ void PageSelectMode(int PlayerID) {
 	SetPal_0014c2da(2,0x1c,0x26870a);
 	SetPal_0014c2da(2,0x1d,0x2557c8);
 	SetPal_0014c2da(2,0x18,0x26894a);
-	FUN_0016b922(0xff04,0,0x32,0x1c,0x2fc336,0x28,0,0x2fc21e);//左边的门动画
-	FUN_0016b922(0x1d0,0,0x33,0x1c,0x2fc2ba,0x28,0,0x2fc21e);//右边的门动画
+	a1 =FUN_0016b922(0xff04,0,0x32,0x1c,0x2fc336,0x28,0,0x2fc21e);//左边的门动画
+	a2 =FUN_0016b922(0x1d0,0,0x33,0x1c,0x2fc2ba,0x28,0,0x2fc21e);//右边的门动画
 	api_delay(0x1a);//自己写的函数，用来刷新多少帧屏幕
 	//Print(0,1,10,3,0,"QQ:100714928");
 	//Print(0,1,12,3,0,"www.qq.com");
@@ -177,12 +178,14 @@ void PageSelectMode(int PlayerID) {
 			case 3:
 				break;
 			}
-			FUN_00152712();
+			FUN_00152712();//让模式选择的文字消失
 			FUN_0015231a();
 			DU16(0x80e04c) = 0;
-			api_delay(0x12);
+			api_delay(16);
 			for(i=0; i<4; i++)
 				FUN_0016f6c2(OBJ[i]);//释放OBJ
+			FUN_0016f6c2(a1);//销毁左边的门
+			FUN_0016f6c2(a2);//销毁右边的门
 			ScreenUpdate_0018c492();
 
 			return;

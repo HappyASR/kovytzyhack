@@ -1,6 +1,17 @@
 void arm_cmd(int CMD,int Param);
 void pause();
 void ST1M1F1();
+void ST1M2F1();
+int ST1M2F2();
+void ST1M2F3();
+void ST1M2F4();
+void ST1M2F5();
+void ST1M2F6();
+
+
+
+
+
 
 typedef struct {
 	int MotionAmount;	//场景数量

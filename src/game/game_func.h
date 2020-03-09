@@ -56,6 +56,11 @@ void arm_cmd(int CMD,int Param);
 #define SetPal_0014c2da FUNC32(0x14c2da)
 
 #define PlayEffect_0018fe24 FUNC32(0x18fe24)
+#define SetSObjPal_0016fc3e FUNC32(0x16fc3e)
+#define LoadRoro_00191e7a FUNC32(0x191e7a)
+#define ExecRoRoCMD_00191fac FUNC32(0x191fac)
+#define PalFade_0014d278 FUNC32(0x14d278)
+
 //******************************************************
 #define FUN_00173c08 FUNC32(0x173c08)
 #define FUN_0016d2f6 FUNC32(0x16d2f6)
