@@ -28,9 +28,15 @@
 1. 运行游戏模拟器进入游戏测试。
 
 #### 更新日志
+##### 2020-03-09
+- 更新去暗桩补丁到104条。
+- MOD了关卡1场景2的刷兵和掉落配置。
+- 新增部分函数名定义。
+![相关截图](https://gitee.com/hackrom/kovytzyhack/raw/master/images/030901.png "相关截图")
+![相关截图](https://gitee.com/hackrom/kovytzyhack/raw/master/images/030902.png "相关截图")
 ##### 2020-03-06
 - 修改了部分文件和文件夹的命名和分配。
-- 模拟了调试菜单界面，投币开始界面，版权页面，模式选择界面，选人界面（未完成）。
+- MOD了调试菜单界面，投币开始界面，版权页面，模式选择界面，选人界面（未完成）。
 ![相关截图](https://gitee.com/hackrom/kovytzyhack/raw/master/images/030601.png "相关截图")
 ![相关截图](https://gitee.com/hackrom/kovytzyhack/raw/master/images/030602.png "相关截图")
 ![相关截图](https://gitee.com/hackrom/kovytzyhack/raw/master/images/030603.png "相关截图")
