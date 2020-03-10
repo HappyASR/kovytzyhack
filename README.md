@@ -1,6 +1,6 @@
 ## 街机游戏 三国战纪1一统中原Hack框架
 #### 在线试玩
-- 试玩地址 https://hackrom.gitee.io/emugif/test/
+- 试玩地址 https://hackrom.gitee.io/emu/kovytzyhack/
 
 ![游戏标题画面](https://gitee.com/hackrom/kovytzyhack/raw/master/images/title.png "游戏标题画面")
 
