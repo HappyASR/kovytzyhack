@@ -1,4 +1,7 @@
 ## 街机游戏 三国战纪1一统中原Hack框架
+#### 在线试玩
+- 试玩地址 https://hackrom.gitee.io/emugif/test/
+
 ![游戏标题画面](https://gitee.com/hackrom/kovytzyhack/raw/master/images/title.png "游戏标题画面")
 
 #### 编译环境
@@ -20,9 +23,6 @@
 1. 编译完成会自动在根目录生成一个ytzy_v201cn_h.rom文件。
 1. 替换原版游戏的PROM。
 1. 运行游戏模拟器进入游戏测试。
-
-#### 在线试玩
-- 试玩地址 https://hackrom.gitee.io/emugif/test/
 
 #### 更新日志
 
