@@ -4,6 +4,12 @@
 
 ![游戏标题画面](https://gitee.com/hackrom/kovytzyhack/raw/master/images/title.png "游戏标题画面")
 
+#### 代码贡献者名单
+- XingXing
+- kensou
+- 0DAY-S
+- xinlinhack
+
 #### 编译环境
 - python2.7 https://www.python.org/ftp/python/2.7.12/python-2.7.12.msi
 - cmake https://cmake.org/download/
@@ -15,6 +21,10 @@
 
 #### 修改讨论
 - 论坛 https://www.ppxclub.com/
+
+#### 在线联机平台支持
+- 畅玩空间 https://www.wo1wan.com/
+- 游聚平台 https://www.gotvg.com/
 
 #### 编译步骤
 1. 下载编译环境的3个安装包，并安装好。
