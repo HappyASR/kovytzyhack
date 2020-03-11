@@ -5,10 +5,10 @@
 ![游戏标题画面](https://gitee.com/hackrom/kovytzyhack/raw/master/images/title.png "游戏标题画面")
 
 #### 代码贡献者名单
-- XingXing
-- [kensou](http://https://gitee.com/hackrom)
+- [XingXing](https://gitee.com/happyasr)
+- [kensou](https://gitee.com/hackrom)
 - 0DAY-S
-- [xinlinhack](http://https://gitee.com/xinlinhack)
+- [xinlinhack](https://gitee.com/xinlinhack)
 
 #### 编译环境
 - python2.7 https://www.python.org/ftp/python/2.7.12/python-2.7.12.msi
