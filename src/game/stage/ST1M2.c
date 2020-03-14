@@ -108,7 +108,7 @@ void ST1M2F6(int param_1){
 	char bVar1;
 	Print(0,0,8,3,0,"ST1M2F6 a1=%X",param_1);
 	bVar1 = *(char *)(*(int *)(param_1 + 0xde) + 1);
-	FUN_0017a936(param_1,(u16)bVar1 * 4 + (u16)bVar1 + 0x1a4,(u16)bVar1 * 4 + 0x11b,0xff20,0,1,0);//主角的出场动作
+	FUN_0017a936(param_1,bVar1 * 4 + bVar1 + 420,bVar1 * 4 + 283,0xFF20,0,1,0);//主角的出场动作
 	return;
 }
 
@@ -146,7 +146,7 @@ int ST1M2F2() {
 		FUN_00179bac(0,1,0x1dd07a);
 		if (DU8(0x81b908) != 0) {//这里判断2个喷火机关是否都打掉了
 			GoMessage_00196142(1,0x35d,0x113,6,0);
-			FUN_00179bac(1,2,0x1dd13a);
+			FUN_00179bac(1,2,0x1dd13a);//
 			DU8(0x81b908) = 0;
 		}
 		ST1M2_Fsm_0081b8fe += 1;
@@ -169,6 +169,7 @@ int ST1M2F2() {
 		FUN_00195434();//释放定时器
 		FUN_00191d5e();//释放定时器
 		api_delay(80);//延时1秒
+		
 		return 3;//返回3就是结束场景 返回4就结束关卡
 	}
 	return 0;
@@ -218,17 +219,15 @@ void ST1M2F1() {
 	DU8(0x81b8fe) = 0;
 	for(i=0; i<12; i++)
 		ExecRoRoCMD_00191fac();//每运行一次执行一行FF脚本
-	api_arm(0x68,0x150);
-	api_arm(0x7d,0x78);
+	api_bgpos(0x150,0x78);//设置场景当前坐标
+
 	FUN_0018c188();
 	ScreenUpdate_0018c492();
 	PalFade_0014d278(0);
 	FUN_00163138(0);
+	
+	api_bgrange(0x150,0x58,0x3f8,0x1e0);//设置场景边界
 
-	api_arm(0x13,0x150);
-	api_arm(0x36,0x58);
-	api_arm(0x24,0x3f8);
-	api_arm(0x58,0x1e0);
 	OBJ = FUN_0016f530();
 	FUN_0016f762(OBJ,0x3d0db4,0,0,0,0);
 	FUN_0017f854(0);

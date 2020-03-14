@@ -4,13 +4,23 @@ void ST1M1F1();
 void ST1M2F1();
 int ST1M2F2();
 void ST1M2F3();
-void ST1M2F4();
+void ST1M2F4(int param_1);
 void ST1M2F5();
-void ST1M2F6();
+void ST1M2F6(int param_1);
 
+void ST1M4F1();
+int ST1M4F2();
+void ST1M4F3();
+void ST1M4F4(int param_1);
+void ST1M4F5();
+void ST1M4F6(int param_1);
 
-
-
+void ST1M6F1();
+int ST1M6F2();
+void ST1M6F3();
+void ST1M6F4(int param_1);
+void ST1M6F5();
+void ST1M6F6(int param_1);
 
 
 typedef struct {

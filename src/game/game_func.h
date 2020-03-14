@@ -63,6 +63,12 @@ void arm_cmd(int CMD,int Param);
 #define SetTime_001a56e4 FUNC32(0x1a56e4)
 
 //******************************************************
+#define FUN_001dfb40 FUNC32(0x1dfb40)
+#define FUN_001dfc1c FUNC32(0x1dfc1c)
+#define FUN_001dfbb2 FUNC32(0x1dfbb2)
+
+
+
 #define FUN_00173c08 FUNC32(0x173c08)
 #define FUN_0016d2f6 FUNC32(0x16d2f6)
 #define FUN_0019b384 FUNC32(0x19b384)
