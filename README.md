@@ -5,10 +5,10 @@
 ![游戏标题画面](https://gitee.com/hackrom/kovytzyhack/raw/master/images/title.png "游戏标题画面")
 
 #### 代码贡献者名单
-- XingXing
-- kensou
+- [XingXing](https://gitee.com/happyasr)
+- [kensou](https://gitee.com/hackrom)
 - 0DAY-S
-- xinlinhack
+- [xinlinhack](https://gitee.com/xinlinhack)
 
 #### 编译环境
 - python2.7 https://www.python.org/ftp/python/2.7.12/python-2.7.12.msi
@@ -25,6 +25,10 @@
 #### 在线联机平台支持
 - 畅玩空间 https://www.wo1wan.com/
 - 游聚平台 https://www.gotvg.com/
+
+#### Hack资料
+- [ghidra的使用教程](https://gitee.com/hackrom/kovytzyhack/blob/master/docs/ghidra%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B.md)
+- [编译环境搭建教程](https://gitee.com/hackrom/kovytzyhack/blob/master/docs/kovytzyhack%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B.md)
 
 #### 编译步骤
 1. 下载编译环境的3个安装包，并安装好。
