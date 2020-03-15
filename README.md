@@ -40,6 +40,11 @@
 
 #### 更新日志
 
+##### 2020-03-15
+- 增加多层血条HOOK
+
+![相关截图](https://gitee.com/hackrom/kovytzyhack/raw/master/images/031501.png "相关截图")
+
 ##### 2020-03-14
 - 更新去暗桩补丁。
 - MOD了关卡1的更多场景

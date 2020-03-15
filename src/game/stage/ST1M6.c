@@ -64,7 +64,7 @@ int ST1M6F2() {
 		break;
 	case 2:
 		SetTime_001a56e4(0xc);
-		FUN_001dfb40();
+		FUN_001dfb40();//这里需要判断是否有2人以上站在洞上
 		FUN_001961da();
 		iVar1 = FUN_0017f474();
 		if ((iVar1 <= DU8(0x81b8ff)) && (iVar1 != 0))
@@ -88,7 +88,7 @@ int ST1M6F2() {
 		FUN_001dfbb2();
 		FUN_00195434();
 		FUN_00191d5e();
-		api_delay(90);
+		api_delay(46);
 		FUN_001a6104(11);//去12场景
 		return 3;
 	}

@@ -4,7 +4,15 @@
 #include "game_type.h"
 #include "game_func.h"
 
-
+/*强制写色盘*/
+void api_wpal_tile(int PalID,int PalPtr){
+	int i;
+	//api_print(0,0,0,3,0,"%02d",PalID);
+	for(i=0;i<8;i++){
+		DU16(0xa01000 + PalID*16 + i*2) = DU16(PalPtr + i*2);
+	}
+	return;
+}
 //arm cmd
 //F5 传入门的编号
 //F4 传入x坐标判断在不在门范围
@@ -13,7 +21,7 @@
 //F1 1000009C 门坐标编号
 
 const u16 DoorTbl[200][4]= {
-	{0, 0, 0, 0}
+	{0, 0, 0, 0},
 	{0x3C8, 0x181, 0x46, 0x28},
 	{0x347, 0xF0, 0x24, 0x3A},
 	{0x347, 0xF0, 0x24, 0x3A},

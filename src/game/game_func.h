@@ -54,6 +54,7 @@ void arm_cmd(int CMD,int Param);
 #define PlayMusic_00195310 FUNC32(0x195310)
 #define PalFadeIn_0014db72 FUNC32(0x14db72)
 #define SetPal_0014c2da FUNC32(0x14c2da)
+#define SetFadePal_0014ce68 FUNC32(0x14ce68)
 
 #define PlayEffect_0018fe24 FUNC32(0x18fe24)
 #define SetSObjPal_0016fc3e FUNC32(0x16fc3e)
@@ -66,7 +67,7 @@ void arm_cmd(int CMD,int Param);
 #define FUN_001dfb40 FUNC32(0x1dfb40)
 #define FUN_001dfc1c FUNC32(0x1dfc1c)
 #define FUN_001dfbb2 FUNC32(0x1dfbb2)
-
+#define FUN_001e0f8a FUNC32(0x1e0f8a)
 
 
 #define FUN_00173c08 FUNC32(0x173c08)

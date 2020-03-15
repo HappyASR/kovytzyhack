@@ -1,2 +1,5 @@
 //测试函数用
-//XXPATCH16JMP16(0x952ca,Hook)
+XXPATCH16JMP16(0x8f346,CreatBossHpBar)
+//XXPATCH16JMP16(0x8fabe,ChangeHP)
+XXPATCH16JMP16(0x8fafc,ChangeBossHpBar)
+
