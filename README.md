@@ -40,6 +40,9 @@
 
 #### 更新日志
 
+- 优化多层血条代码，支持自定义多层颜色和数值显示
+![相关截图](https://gitee.com/hackrom/kovytzyhack/raw/master/images/031601.png "相关截图")
+
 ##### 2020-03-15
 - 增加多层血条HOOK
 
