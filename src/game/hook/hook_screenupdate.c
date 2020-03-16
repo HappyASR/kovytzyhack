@@ -5,10 +5,10 @@
 #include "../game_func.h"
 #include "../game_api.h"
 #include "../game_struct.h"
+#include "hook.h"
 
 
-extern const u16 BossHPPal[8][8];
-struct BossInfo BossMem[3];
+
 
 /*屏幕刷新*/
 int ScreenUpdate() {
@@ -28,9 +28,9 @@ int ScreenUpdate() {
 		FUN_0016b990();
 	}
 	FUN_00198894();
+
 	/*以下是自己添加的内容*/
 	/*改变BOSS血条颜色*/
-	
 	for(i=0; i<3; i++) {
 		
 		if(!DU8(0x80cf1e + i*438 + 0xd4)){
