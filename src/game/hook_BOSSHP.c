@@ -38,7 +38,7 @@ void ChangeBossHpBar(struct TileInfo *off) {
 	};
 	int Boss = 0x80cf1e;
 	
-	Pal[5] = 0xffe0 - BossHPRow[0] * 0x20 ;
+	Pal[5] = 0xffe0 - BossHPRow[0] * 0x200 ;
 	Pal[3] = Pal[5] -0x8000 ;
 
 	if (off->change != 0) {//判断是否要扣血
@@ -49,7 +49,7 @@ void ChangeBossHpBar(struct TileInfo *off) {
 				off->row = off->row - 1;//hp-1
 				if (off->row == 0 && BossHPRow[0]!=0) {//如果已经扣血到最左边了并且BOSS还有血条
 					//A3=0x905628;
-					for(i=0; i<25; i++) {//200/8=25 填充血条中间
+					for(i=0; i<15; i++) {//200/8=25 填充血条中间
 						//DU32(A3) = 0;
 						off->tileptr += 2;
 						DU16(off->tileptr) = 0xC55C+1;
@@ -57,11 +57,12 @@ void ChangeBossHpBar(struct TileInfo *off) {
 						//DU8(A3+3) ^= 20;
 						
 					}
-					api_wpal_tile(20,Pal);//修改血条色盘
+					DU16(0xa01140+10) = DU16(0xa01140+6);
+					DU16(0xa01140+6) = 0xffe0 - 0x50*BossHPRow[0];//修改血条色盘
 					BossHPRow[0] += -1;
 					//off->tileptr = off->tileptr + -0x80;//切换到上一行
 					//off->tileptr = off->tileptr + 50;//最右边
-					off->row = 25;//块=45
+					off->row = 15;//块=45
 					
 				}
 			}
@@ -74,7 +75,7 @@ void ChangeBossHpBar(struct TileInfo *off) {
 				off->field_0x2 = 0;//bit=0
 				off->tileptr = off->tileptr + 2;//tile地址+4
 				off->row = off->row + 1;//hp+1
-				if (off->row == 26) {//如果到最右边了
+				if (off->row == 16) {//如果到最右边了
 					//off->tileptr = off->tileptr + 0x80;//切换到下一行
 					off->tileptr = off->tileptr + -50-4;//最左边
 					off->row = 1;//切换到最左边
@@ -180,7 +181,7 @@ void CreatBossHpBar(int RoroID,RoroMem *Boss) {
 	FUN_001544fe(DU16(A2+0x2ac),2);
 	//PU8(0x80bad7)[DU16(A2+0x2ac)*0x14] = 2;
 	//DU8(0x80ceea) = 1;
-	row = (Boss->MaxHP+199)/200;
+	row = (Boss->MaxHP+119)/120;
 	//Print(0,4,9,0,0,"ROW=%01d ID=%02d",row,DU16(A2+0x2ac));
 	DU8(0x8137ee) = row;
 	DU8(0x8137ef) = row;
@@ -189,25 +190,25 @@ void CreatBossHpBar(int RoroID,RoroMem *Boss) {
 
 
 	/*下面开始绘制血条*/
-	BossHPRow[RoroID] = (Boss->MaxHP+199)/200;
+	BossHPRow[RoroID] = (Boss->MaxHP+119)/120;
 	A3 = A2 + 0 * 0xe0; //0x813544+0xe0?
 	A3 += 10;
 	DU32(A3) = 0;
 	DU16(A3) = 0xC55C;//血条左边框
 	DU8(A3+3) &= 0xc1;
-	DU8(A3+3) ^= 11;
+	DU8(A3+3) ^= 20;
 	A3 += 4;
 	
 
-	Pal[5] = 0xffe0 - BossHPRow[RoroID] * 0x20 ;
-	Pal[3] = Pal[5] -0x8000 ;
-	api_wpal_tile(11,Pal);//载入BOSS用血条
+	//Pal[5] = 0xffe0 - BossHPRow[RoroID] * 0x20 ;
+	//Pal[3] = Pal[5] -0x8000 ;
+	api_wpal_tile(20,Pal);//载入BOSS用血条
 	//SetPal_0014c2da(0,20,Pal);
-	for(i=0; i<25; i++) {//200/8=25 填充血条中间
+	for(i=0; i<15; i++) {//200/8=25 填充血条中间
 		DU32(A3) = 0;
 		DU16(A3) = 0xC55C+1;
 		DU8(A3+3) &= 0xc1;
-		DU8(A3+3) ^= 11;
+		DU8(A3+3) ^= 20;
 		A3 += 4;
 	}
 	Print(0,4,15,0,0,"%d",i);
@@ -215,7 +216,7 @@ void CreatBossHpBar(int RoroID,RoroMem *Boss) {
 	DU32(A3) = 0;//清空tile
 	DU16(A3) = DU16(0x813542) + 10;//血条右边
 	DU8(A3+3) &= 0xc1;
-	DU8(A3+3) ^= 11;
+	DU8(A3+3) ^= 20;
 
 	DU8(A2+1) = i;//row=25
 	DU32(A2+6) = (DU16(0x813b14) + RoroID * -2 + 1)*0x100 + 0x904024;//ptr
