@@ -1,0 +1,1 @@
+XXPATCH16JMP16(0x8c492,ScreenUpdate)

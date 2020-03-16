@@ -62,14 +62,25 @@ void arm_cmd(int CMD,int Param);
 #define ExecRoRoCMD_00191fac FUNC32(0x191fac)
 #define PalFade_0014d278 FUNC32(0x14d278)
 #define SetTime_001a56e4 FUNC32(0x1a56e4)
+#define GetPlayerCnt_0017f474 FUNC32(0x17f474)
+#define CreatEnemy_00155894 FUNC32(0x155894)
+#define SetEnemyData_00156024 FUNC32(0x156024)
+#define GetRoroActionDataPtr_001596de FUNC32(0x1596de)
+#define SetRoroActionByActionDataPtr_00159864 FUNC32(0x159864)
+#define GetRoroPtrByEnemyID_00159bd6 (RoroMem*)FUNC32(0x159bd6)
+#define rand_00150e52 FUNC32(0x150e52)
+#define DrawBossHeadAndHPBar_00155c18 FUNC32(0x155c18)
+#define RoroUse_0018f1c8 FUNC32(0x18f1c8)
+#define SetMotionTime_001a5708 FUNC32(0x1a5708)
+
 
 //******************************************************
 #define FUN_001dfb40 FUNC32(0x1dfb40)
 #define FUN_001dfc1c FUNC32(0x1dfc1c)
 #define FUN_001dfbb2 FUNC32(0x1dfbb2)
 #define FUN_001e0f8a FUNC32(0x1e0f8a)
-
-
+#define FUN_0016a788 FUNC32(0x16a788)
+#define FUN_0015a154 FUNC32(0x15a154)
 #define FUN_00173c08 FUNC32(0x173c08)
 #define FUN_0016d2f6 FUNC32(0x16d2f6)
 #define FUN_0019b384 FUNC32(0x19b384)

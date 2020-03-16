@@ -4,6 +4,11 @@
 #include "game_type.h"
 #include "game_func.h"
 
+
+void api_return(){
+	return;
+}
+
 /*强制写色盘*/
 void api_wpal_tile(int PalID,int PalPtr){
 	int i;

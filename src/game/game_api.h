@@ -7,3 +7,4 @@ void api_clralldoor();
 void api_chkdoor();
 void api_clrdoor();
 void api_wpal_tile(int PalID,int PalPtr);
+void api_return();

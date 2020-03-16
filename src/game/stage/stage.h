@@ -22,6 +22,13 @@ void ST1M6F4(int param_1);
 void ST1M6F5();
 void ST1M6F6(int param_1);
 
+void ST1M13F1();
+int ST1M13F2();
+void ST1M13F3();
+void ST1M13F4(int param_1);
+void ST1M13F5();
+void ST1M13F6(int param_1);
+
 
 typedef struct {
 	int MotionAmount;	//场景数量

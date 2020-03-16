@@ -26,6 +26,67 @@ typedef struct CollDataElem CollDataElem, *PCollDataElem;
 
 typedef struct InputInsElem InputInsElem, *PInputInsElem;
 
+
+
+
+#define BOSS_HP_BAR_SIZE 320
+#define BOSS0_HP_PALID 4
+#define BOSS1_HP_PALID 6
+#define BOSS2_HP_PALID 8
+struct TileInfo {
+	char state;
+	char row;
+	char field_0x2;
+	char unk;
+	short change;
+	short *tileptr;
+};
+struct BossInfo {
+	int RoroStatus;
+	int RoroUseID;
+	int EnemyID;
+	int HeadOBJPtr[4];
+	int NameOBJPtr[4];
+	int DisplayID;
+	int DisplayID2;
+	int Lifes;
+	int HPBarUse;
+	int HPNowpos;
+	short HPChangeVal;
+	int HPTilesPtr;
+	int Bit;
+	short HPTiles[112];
+};
+
+
+
+static const u16 BossHPPal[8][8]= {
+	//                 ,,,扣血颜色,,    底色,,,,
+	{0x0040,0x7bda,0x5000,0x8000,0x0200,0xfc00,0x00da,0x02df},//第一层 刷子黑 背景红
+	{0x0040,0x7bda,0x5000,0xfc00,0x0200,0xfe00,0x00da,0x02df},//第二层 刷子红 背景橙
+	{0x0040,0x7bda,0x5000,0xfe00,0x0200,0xffe0,0x00da,0x02df},//第三层 刷子橙 背景黄
+	{0x0040,0x7bda,0x5000,0xffe0,0x0200,0x83e0,0x00da,0x02df},//第四层 刷子黄 背景绿
+	{0x0040,0x7bda,0x5000,0x83e0,0x0200,0x823f,0x00da,0x02df},//第五层 刷子绿 背景蓝
+	{0x0040,0x7bda,0x5000,0x823f,0x0200,0xc21f,0x00da,0x02df},//第六层 刷子蓝 背景紫
+	{0x0040,0x7bda,0x5000,0xc21f,0x0200,0xc210,0x00da,0x02df},//第七层 刷子紫 背景灰
+	{0x0040,0x7bda,0x5000,0xc210,0x0200,0xffff,0x00da,0x02df} //第八层 刷子灰 背景白
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 struct RoroMem {
     undefined field_0x0;
     undefined field_0x1;
@@ -88,7 +149,7 @@ struct RoroMem {
     undefined field_0x55;
     int Pal;
     int Base_Index;
-    ushort MaxHP; /* Created by retype action */
+    ushort HP; /* Created by retype action */
     short DisplayUse;
     undefined field_0x62;
     undefined field_0x63;
@@ -246,7 +307,7 @@ struct RoroMem {
     undefined field_0xfe;
     undefined field_0xff;
     undefined field_0x100;
-    undefined field_0x101;
+    char RoroUseID;
     undefined field_0x102;
     undefined field_0x103;
     undefined field_0x104;
