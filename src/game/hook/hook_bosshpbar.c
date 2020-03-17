@@ -12,16 +12,16 @@ struct BossInfo BossMem[3];
 
 
 
-const u16 BossHPPal[8][8]= {
+const u16 BossHPPal[8][16]= {
 	//                 ,,,扣血颜色,,    底色,,,,
-	{0x0040,0x7bda,0x5000,0x8000,0x0200,0xfc00,0x00da,0x02df},//第一层 刷子黑 背景红
-	{0x0040,0x7bda,0x5000,0xfc00,0x0200,0xfe00,0x00da,0x02df},//第二层 刷子红 背景橙
-	{0x0040,0x7bda,0x5000,0xfe00,0x0200,0xffe0,0x00da,0x02df},//第三层 刷子橙 背景黄
-	{0x0040,0x7bda,0x5000,0xffe0,0x0200,0x83e0,0x00da,0x02df},//第四层 刷子黄 背景绿
-	{0x0040,0x7bda,0x5000,0x83e0,0x0200,0x823f,0x00da,0x02df},//第五层 刷子绿 背景蓝
-	{0x0040,0x7bda,0x5000,0x823f,0x0200,0xc21f,0x00da,0x02df},//第六层 刷子蓝 背景紫
-	{0x0040,0x7bda,0x5000,0xc21f,0x0200,0xc210,0x00da,0x02df},//第七层 刷子紫 背景灰
-	{0x0040,0x7bda,0x5000,0xc210,0x0200,0xffff,0x00da,0x02df} //第八层 刷子灰 背景白
+	{0x0040,0x7bda,0x5000,0x8000,0x0200,0xfc00,0x00da,0x02df,0x0040,0x7bda,0x5000,0x8000,0x0200,0xfc00,0x00da,0x02df},//第一层 刷子黑 背景红
+	{0x0040,0x7bda,0x5000,0xfc00,0x0200,0xfe00,0x00da,0x02df,0x0040,0x7bda,0x5000,0x8000,0x0200,0xfc00,0x00da,0x02df},//第二层 刷子红 背景橙
+	{0x0040,0x7bda,0x5000,0xfe00,0x0200,0xffe0,0x00da,0x02df,0x0040,0x7bda,0x5000,0x8000,0x0200,0xfc00,0x00da,0x02df},//第三层 刷子橙 背景黄
+	{0x0040,0x7bda,0x5000,0xffe0,0x0200,0x83e0,0x00da,0x02df,0x0040,0x7bda,0x5000,0x8000,0x0200,0xfc00,0x00da,0x02df},//第四层 刷子黄 背景绿
+	{0x0040,0x7bda,0x5000,0x83e0,0x0200,0x823f,0x00da,0x02df,0x0040,0x7bda,0x5000,0x8000,0x0200,0xfc00,0x00da,0x02df},//第五层 刷子绿 背景蓝
+	{0x0040,0x7bda,0x5000,0x823f,0x0200,0xc21f,0x00da,0x02df,0x0040,0x7bda,0x5000,0x8000,0x0200,0xfc00,0x00da,0x02df},//第六层 刷子蓝 背景紫
+	{0x0040,0x7bda,0x5000,0xc21f,0x0200,0xc210,0x00da,0x02df,0x0040,0x7bda,0x5000,0x8000,0x0200,0xfc00,0x00da,0x02df},//第七层 刷子紫 背景灰
+	{0x0040,0x7bda,0x5000,0xc210,0x0200,0xffff,0x00da,0x02df,0x0040,0x7bda,0x5000,0x8000,0x0200,0xfc00,0x00da,0x02df} //第八层 刷子灰 背景白
 };
 
 
@@ -38,9 +38,9 @@ int ChkBossUse() {
 }
 
 void DrawBossHPBar(int RoroUseID,RoroMem *RoroPtr) {
-	int i;
+	int i,j;
 
-	BossMem[RoroUseID].Lifes = (RoroPtr->HP+BOSS_HP_BAR_SIZE-1)/BOSS_HP_BAR_SIZE;
+	BossMem[RoroUseID].Lifes = (RoroPtr->HP + BOSS_HP_BAR_SIZE-1)/BOSS_HP_BAR_SIZE;
 
 	//Print(0,4,8+RoroUseID,0,0,"%X",BossMem[i].Lifes);
 
@@ -102,6 +102,29 @@ void DrawBossHPBar(int RoroUseID,RoroMem *RoroPtr) {
 	Print(0,10,21-RoroUseID*2,1,0,"LIFE=%02d HP=%d    ",BossMem[RoroUseID].Lifes-1,RoroPtr->HP * 100);
 	FUN_0016e0fa(FUN_0016e098(BossMem[RoroUseID].HPTiles),0,i+2,1,BossMem[RoroUseID].HPTilesPtr,0);
 	BossMem[RoroUseID].HPTilesPtr += BossMem[RoroUseID].HPNowpos * 4;
+
+
+	//补画未对齐的血量
+	// for(i=0; i < (BOSS_HP_BAR_SIZE - (RoroPtr->HP % BOSS_HP_BAR_SIZE)); i++) {
+		// if(BossMem[RoroUseID].Bit==0) { //1格画完需要往前移一格
+			// BossMem[RoroUseID].Bit = 8;//把格子置最右边
+			// BossMem[RoroUseID].HPTilesPtr += -4;//Tile指针往前移1格
+			// BossMem[RoroUseID].HPNowpos += -1;//当前格子数减1
+			// if(BossMem[RoroUseID].HPNowpos==0 && BossMem[RoroUseID].Lifes!=1) {
+				// for(j=0; j<BOSS_HP_BAR_SIZE/8; j++) {
+					// BossMem[RoroUseID].HPTilesPtr += 4;
+					// DU16(BossMem[RoroUseID].HPTilesPtr) = 0xC55C+1;
+				// }
+				// BossMem[RoroUseID].Lifes += -1;
+				// BossMem[RoroUseID].HPNowpos = BOSS_HP_BAR_SIZE/8;
+			// }
+		// }
+		// BossMem[RoroUseID].Bit += -1;
+		// DU16(BossMem[RoroUseID].HPTilesPtr) = 0xC55C + 9 - BossMem[RoroUseID].Bit;
+	// }
+	// api_delay(1);
+
+
 	DU8(0x813aca) = 1;
 
 
@@ -111,6 +134,7 @@ void DrawBossHPBar(int RoroUseID,RoroMem *RoroPtr) {
 
 void ChangeBossHpBar(int RoroUseID) {
 	int i;
+	
 	if(BossMem[RoroUseID].HPChangeVal != 0) {
 		if(BossMem[RoroUseID].HPChangeVal<0) {
 			if(BossMem[RoroUseID].Bit ==0) {
@@ -129,7 +153,7 @@ void ChangeBossHpBar(int RoroUseID) {
 			BossMem[RoroUseID].Bit += -1;
 			DU16(BossMem[RoroUseID].HPTilesPtr) = 0xC55C + 9 - BossMem[RoroUseID].Bit;
 			BossMem[RoroUseID].HPChangeVal += 1;
-			if(BossMem[i].HPBarUse)
+			if(BossMem[RoroUseID].HPBarUse)
 				Print(0,10,21-RoroUseID*2,1,0,"LIFE=%02d HP=%d    ",BossMem[RoroUseID].Lifes-1,DU16(0x80cf1e + BossMem[RoroUseID].EnemyID * 438 +94) * 100);
 			else
 				Print(0,10,21-RoroUseID*2,1,0,"                        ");
@@ -173,9 +197,6 @@ void DrawBossHead(int RoroUseID,RoroMem *RoroPtr) {
 	BossMem[RoroUseID].DisplayID2 = FUN_0015420a();
 	FUN_0015424e(BossMem[RoroUseID].DisplayID2,(int*)&BossMem[RoroUseID].NameOBJPtr,0x7fff);
 
-
-
-	//BossMem = 0x813544 + RoroUseID * 706;
 	if(RoroUseID==0) {
 		if(FUN_001a5776())
 			SetPal_0014c2da(0,10,PU32(0x303914)[RoroPtr->RoroRom2->RoleId]);

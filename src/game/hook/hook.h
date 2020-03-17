@@ -14,5 +14,5 @@ extern void ChkBossHP();
 extern void DrawBossHead(int RoroUseID,RoroMem *RoroPtr);
 extern void DrawBossInfo(RoroMem *RoroPtr);
 
-extern const u16 BossHPPal[8][8];
+extern const u16 BossHPPal[8][16];
 extern struct BossInfo BossMem[];

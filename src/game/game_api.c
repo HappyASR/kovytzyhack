@@ -14,7 +14,7 @@ void api_return(){
 void api_wpal_tile(int PalID,int PalPtr){
 	int i;
 	//api_print(0,0,0,3,0,"%02d",PalID);
-	for(i=0;i<8;i++){
+	for(i=0;i<16;i++){
 		DU16(0xa01000 + PalID*16 + i*2) = DU16(PalPtr + i*2);
 	}
 	return;

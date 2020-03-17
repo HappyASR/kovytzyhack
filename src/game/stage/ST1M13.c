@@ -25,8 +25,9 @@ void ST1M13Boss() {
 	int CMD;
 
 	DU16(0x81b936)=1;
-	if(GetPlayerCnt_0017f474()>3 && !DU8(0x813536)) { //判断玩家数小于3，第一轮游戏
+	if(GetPlayerCnt_0017f474()<3 && !DU8(0x813536)) { //判断玩家数小于3，第一轮游戏
 		EnemyID = CreatEnemy_00155894();
+		BossMem[0].EnemyID = EnemyID;
 		rand=rand_00150e52(0x400);
 		rand=rand%4;
 		SetEnemyData_00156024(EnemyID,PU32(0x3d17ce)[rand],764,272,0,1,(int)(rand==1));
@@ -34,12 +35,25 @@ void ST1M13Boss() {
 		FUN_0015a154(RoroPtr,0);
 		CMD = GetRoroActionDataPtr_001596de(RoroPtr,2,1);
 		SetRoroActionByActionDataPtr_00159864(RoroPtr,CMD);
-		RoroPtr->HP = 554;
+		RoroPtr->HP = 100;
 		RoroPtr->field_0xf5 = 60;
 		DrawBossInfo(RoroPtr);
+		
+		EnemyID = CreatEnemy_00155894();
+		BossMem[1].EnemyID = EnemyID;
+		SetEnemyData_00156024(EnemyID,0x10a3ea,764,272,0,1,0);
+		RoroPtr = GetRoroPtrByEnemyID_00159bd6(EnemyID);
+		FUN_0015a154(RoroPtr,0);
+		CMD = GetRoroActionDataPtr_001596de(RoroPtr,2,1);
+		SetRoroActionByActionDataPtr_00159864(RoroPtr,CMD);
+		RoroPtr->HP = 320;
+		RoroPtr->field_0xf5 = 60;
+		DrawBossInfo(RoroPtr);		
+				
 		DU16(0x81b934) = 0;
 		if(rand>1)
 			DU16(0x81b936)=0;
+		
 	} else { //3-4人或者第二轮
 		EnemyID = CreatEnemy_00155894();
 		BossMem[0].EnemyID = EnemyID;
@@ -48,26 +62,12 @@ void ST1M13Boss() {
 		FUN_0015a154(RoroPtr,0);
 		CMD = GetRoroActionDataPtr_001596de(RoroPtr,2,1);
 		SetRoroActionByActionDataPtr_00159864(RoroPtr,CMD);
-		RoroPtr->HP = 554;
+		RoroPtr->HP = 320;
 		RoroPtr->field_0xf5 = 60;
 		DrawBossInfo(RoroPtr);
 
-
 		EnemyID = CreatEnemy_00155894();
-		SetEnemyData_00156024(EnemyID,0x366830,764,272,0,1,0);
 		BossMem[1].EnemyID = EnemyID;
-		RoroPtr = GetRoroPtrByEnemyID_00159bd6(EnemyID);
-		FUN_0015a154(RoroPtr,0);
-		CMD = GetRoroActionDataPtr_001596de(RoroPtr,2,1);
-		SetRoroActionByActionDataPtr_00159864(RoroPtr,CMD);
-		RoroPtr->HP = 554;
-		RoroPtr->field_0xf5 = 60;
-		DrawBossInfo(RoroPtr);
-
-
-
-		EnemyID = CreatEnemy_00155894();
-		BossMem[2].EnemyID = EnemyID;
 		rand=rand_00150e52(0x400);
 		if(rand<0x201) {
 			SetEnemyData_00156024(EnemyID,0x366830,800,300,0,1,0);
@@ -77,7 +77,7 @@ void ST1M13Boss() {
 		RoroPtr = GetRoroPtrByEnemyID_00159bd6(EnemyID);
 		CMD = GetRoroActionDataPtr_001596de(RoroPtr,2,1);
 		SetRoroActionByActionDataPtr_00159864(RoroPtr,CMD);
-		RoroPtr->HP = 554;
+		RoroPtr->HP = 320;
 		RoroPtr->field_0xf5 = 60;
 		DrawBossInfo(RoroPtr);
 		DU16(0x81b934) = 1;
@@ -90,8 +90,7 @@ void ST1M13F6(int RoleMem) {
 	char bVar1;
 	//Print(0,0,8,3,0,"ST1M13F6 a1=%d,%06X",RoleMem);
 	bVar1 = *(char *)(*(int *)(RoleMem + 0xde) + 1);
-	FUN_0017a936(RoleMem,(u16)bVar1 * 4 + (u16)bVar1 + 0x241,(u16)bVar1 * 2 + 0x9d,0,
-	             0,2,0x34);
+	FUN_0017a936(RoleMem,(u16)bVar1 * 4 + (u16)bVar1 + 0x241,(u16)bVar1 * 2 + 0x9d,0,0,2,0x34);
 	return;
 }
 
