@@ -1,7 +1,0 @@
-//测试函数用
-
-XXPATCH16JMP16(0x8fabe,ChangeBossHP)
-XXPATCH16JMP16(0x8fafc,ChangeBossHpBar)
-XXPATCH16JMP16(0x8fbb4,ChkBossHP)
-XXPATCH16JMP16(0x55c18,DrawBossInfo)
-
