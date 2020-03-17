@@ -36,7 +36,7 @@ int ScreenUpdate() {
 		if(!DU8(0x80cf1e + i*438 + 0xd4)){
 			BossMem[i].HPBarUse = 0;
 		}
-		if(BossMem[i].HPBarUse) {
+		if(BossMem[i].HPBarUse == 2) {
 			api_wpal_tile((i+2)*2,(int)&BossHPPal[BossMem[i].Lifes]);
 		}
 	}
