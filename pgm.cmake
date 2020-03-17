@@ -38,7 +38,7 @@ set( ROM_OUTPUT "ytzy_v201cn_h.rom")
 
 # Set the CMAKE C flags (which should also be used by the assembler!# -Werror
 set( CMAKE_C_FLAGS "-m68000 -std=c99 -fomit-frame-pointer -O2 -Winline -Wall -Wa,--register-prefix-optional -I. -Isrc" )
-set( CMAKE_EXE_LINKER_FLAGS "-nostdlib -Wl,-Map,${GAME_MAP},-T,../pgm.lds,--section-start,.rom=0x100000,--section-start,.ram=0x800a00")
+set( CMAKE_EXE_LINKER_FLAGS "-nostdlib -Wl,-Map,${GAME_MAP},-T,../pgm.lds,--section-start,.rom=0x100000,--section-start,.ram=0x808000")
 set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS}" CACHE STRING "" )
 set( CMAKE_ASM_FLAGS "${CMAKE_C_FLAGS}" CACHE STRING "" )
 set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}" CACHE STRING "" )

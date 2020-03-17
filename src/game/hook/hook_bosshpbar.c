@@ -8,7 +8,7 @@
 #include "hook.h"
 
 
-struct BossInfo BossMem[3];
+struct BossInfo BossMem[8];
 
 
 
@@ -40,8 +40,11 @@ int ChkBossUse() {
 void DrawBossHPBar(int RoroUseID,RoroMem *RoroPtr) {
 	int i,j;
 
-	BossMem[RoroUseID].Lifes = (RoroPtr->HP + BOSS_HP_BAR_SIZE-1)/BOSS_HP_BAR_SIZE;
 
+	if(RoroPtr->HP <= BOSS_HP_BAR_SIZE)
+		BossMem[RoroUseID].Lifes = 0;
+	else
+		BossMem[RoroUseID].Lifes = RoroPtr->HP/BOSS_HP_BAR_SIZE;
 	//Print(0,4,8+RoroUseID,0,0,"%X",BossMem[i].Lifes);
 
 	BossMem[RoroUseID].HPTiles[0] = 0;
@@ -63,7 +66,10 @@ void DrawBossHPBar(int RoroUseID,RoroMem *RoroPtr) {
 	for(i=0; i<BOSS_HP_BAR_SIZE/8; i++) {
 		BossMem[RoroUseID].HPTiles[i*2+2] = 0;
 		BossMem[RoroUseID].HPTiles[i*2+3] = 0;
-		BossMem[RoroUseID].HPTiles[i*2+2] = 0xC55C+1;
+		if(i >= (RoroPtr->HP % BOSS_HP_BAR_SIZE) / 8 && RoroPtr->HP % BOSS_HP_BAR_SIZE != 0)
+			BossMem[RoroUseID].HPTiles[i*2+2] = 0xC55C+9;
+		else
+			BossMem[RoroUseID].HPTiles[i*2+2] = 0xC55C+1;
 		BossMem[RoroUseID].HPTiles[i*2+3] &= 0xC1;
 		switch(RoroUseID) {
 		case 0:
@@ -95,37 +101,16 @@ void DrawBossHPBar(int RoroUseID,RoroMem *RoroPtr) {
 	}
 
 	BossMem[RoroUseID].HPBarUse = 2;
-	BossMem[RoroUseID].HPNowpos = i;
+	if(RoroPtr->HP%BOSS_HP_BAR_SIZE == 0)
+		BossMem[RoroUseID].HPNowpos =  BOSS_HP_BAR_SIZE/8;
+	else
+		BossMem[RoroUseID].HPNowpos = (RoroPtr->HP % BOSS_HP_BAR_SIZE)/8;
 	BossMem[RoroUseID].HPChangeVal = 0;
 	BossMem[RoroUseID].Bit = 8;
 	BossMem[RoroUseID].HPTilesPtr = (21 + RoroUseID * -2 + 1)*0x100 + 0x904024;
-	Print(0,10,21-RoroUseID*2,1,0,"LIFE=%02d HP=%d    ",BossMem[RoroUseID].Lifes-1,RoroPtr->HP * 100);
+	Print(0,10,21-RoroUseID*2,1,0,"LIFE=%02d HP=%d    ",BossMem[RoroUseID].Lifes,RoroPtr->HP * 100);
 	FUN_0016e0fa(FUN_0016e098(BossMem[RoroUseID].HPTiles),0,i+2,1,BossMem[RoroUseID].HPTilesPtr,0);
 	BossMem[RoroUseID].HPTilesPtr += BossMem[RoroUseID].HPNowpos * 4;
-
-
-	//补画未对齐的血量
-	// for(i=0; i < (BOSS_HP_BAR_SIZE - (RoroPtr->HP % BOSS_HP_BAR_SIZE)); i++) {
-		// if(BossMem[RoroUseID].Bit==0) { //1格画完需要往前移一格
-			// BossMem[RoroUseID].Bit = 8;//把格子置最右边
-			// BossMem[RoroUseID].HPTilesPtr += -4;//Tile指针往前移1格
-			// BossMem[RoroUseID].HPNowpos += -1;//当前格子数减1
-			// if(BossMem[RoroUseID].HPNowpos==0 && BossMem[RoroUseID].Lifes!=1) {
-				// for(j=0; j<BOSS_HP_BAR_SIZE/8; j++) {
-					// BossMem[RoroUseID].HPTilesPtr += 4;
-					// DU16(BossMem[RoroUseID].HPTilesPtr) = 0xC55C+1;
-				// }
-				// BossMem[RoroUseID].Lifes += -1;
-				// BossMem[RoroUseID].HPNowpos = BOSS_HP_BAR_SIZE/8;
-			// }
-		// }
-		// BossMem[RoroUseID].Bit += -1;
-		// DU16(BossMem[RoroUseID].HPTilesPtr) = 0xC55C + 9 - BossMem[RoroUseID].Bit;
-	// }
-	// api_delay(1);
-
-
-	DU8(0x813aca) = 1;
 
 
 	return;
@@ -134,7 +119,7 @@ void DrawBossHPBar(int RoroUseID,RoroMem *RoroPtr) {
 
 void ChangeBossHpBar(int RoroUseID) {
 	int i;
-	
+
 	if(BossMem[RoroUseID].HPChangeVal != 0) {
 		if(BossMem[RoroUseID].HPChangeVal<0) {
 			if(BossMem[RoroUseID].Bit ==0) {
@@ -154,7 +139,7 @@ void ChangeBossHpBar(int RoroUseID) {
 			DU16(BossMem[RoroUseID].HPTilesPtr) = 0xC55C + 9 - BossMem[RoroUseID].Bit;
 			BossMem[RoroUseID].HPChangeVal += 1;
 			if(BossMem[RoroUseID].HPBarUse)
-				Print(0,10,21-RoroUseID*2,1,0,"LIFE=%02d HP=%d    ",BossMem[RoroUseID].Lifes-1,DU16(0x80cf1e + BossMem[RoroUseID].EnemyID * 438 +94) * 100);
+				Print(0,10,21-RoroUseID*2,1,0,"LIFE=%02d HP=%d    ",BossMem[RoroUseID].Lifes,DU16(0x80cf1e + BossMem[RoroUseID].EnemyID * 438 +94) * 100);
 			else
 				Print(0,10,21-RoroUseID*2,1,0,"                        ");
 

@@ -8,7 +8,7 @@
 #include "../game_struct.h"
 #include "../hook/hook.h"
 
-extern struct BossInfo BossMem[];
+
 
 
 
@@ -35,20 +35,9 @@ void ST1M13Boss() {
 		FUN_0015a154(RoroPtr,0);
 		CMD = GetRoroActionDataPtr_001596de(RoroPtr,2,1);
 		SetRoroActionByActionDataPtr_00159864(RoroPtr,CMD);
-		RoroPtr->HP = 100;
+		RoroPtr->HP = 328;
 		RoroPtr->field_0xf5 = 60;
 		DrawBossInfo(RoroPtr);
-		
-		EnemyID = CreatEnemy_00155894();
-		BossMem[1].EnemyID = EnemyID;
-		SetEnemyData_00156024(EnemyID,0x10a3ea,764,272,0,1,0);
-		RoroPtr = GetRoroPtrByEnemyID_00159bd6(EnemyID);
-		FUN_0015a154(RoroPtr,0);
-		CMD = GetRoroActionDataPtr_001596de(RoroPtr,2,1);
-		SetRoroActionByActionDataPtr_00159864(RoroPtr,CMD);
-		RoroPtr->HP = 320;
-		RoroPtr->field_0xf5 = 60;
-		DrawBossInfo(RoroPtr);		
 				
 		DU16(0x81b934) = 0;
 		if(rand>1)

@@ -37,7 +37,7 @@ int ScreenUpdate() {
 			BossMem[i].HPBarUse = 0;
 		}
 		if(BossMem[i].HPBarUse) {
-			api_wpal_tile((i+2)*2,(int)&BossHPPal[BossMem[i].Lifes-1]);
+			api_wpal_tile((i+2)*2,(int)&BossHPPal[BossMem[i].Lifes]);
 		}
 	}
 
