@@ -8,7 +8,7 @@
 #include "hook.h"
 
 
-struct BossInfo BossMem[8];
+struct BossInfo BossMem[3];
 
 
 
@@ -118,7 +118,7 @@ void DrawBossHPBar(int RoroUseID,RoroMem *RoroPtr) {
 }
 
 void ChangeBossHpBar(int RoroUseID) {
-	int i;
+	int i,HP;
 
 	if(BossMem[RoroUseID].HPChangeVal != 0) {
 		if(BossMem[RoroUseID].HPChangeVal<0) {
@@ -138,8 +138,10 @@ void ChangeBossHpBar(int RoroUseID) {
 			BossMem[RoroUseID].Bit += -1;
 			DU16(BossMem[RoroUseID].HPTilesPtr) = 0xC55C + 9 - BossMem[RoroUseID].Bit;
 			BossMem[RoroUseID].HPChangeVal += 1;
+			HP = GetRoroPtrByEnemyID_00159bd6(BossMem[RoroUseID].EnemyID);
+			
 			if(BossMem[RoroUseID].HPBarUse)
-				Print(0,10,21-RoroUseID*2,1,0,"LIFE=%02d HP=%d    ",BossMem[RoroUseID].Lifes,DU16(0x80cf1e + BossMem[RoroUseID].EnemyID * 438 +94) * 100);
+				Print(0,10,21-RoroUseID*2,1,0,"LIFE=%02d HP=%d    ",BossMem[RoroUseID].Lifes,DU16(HP +94) * 100);
 			else
 				Print(0,10,21-RoroUseID*2,1,0,"                        ");
 
