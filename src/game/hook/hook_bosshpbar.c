@@ -40,7 +40,7 @@ int ChkBossUse() {
 void DrawBossHPBar(int RoroUseID,RoroMem *RoroPtr) {
 	int i,j;
 
-
+	BossMem[RoroUseID].EnemyID = ((int)RoroPtr - 0x80cf1e) / 0x1b6;
 	if(RoroPtr->HP <= BOSS_HP_BAR_SIZE)
 		BossMem[RoroUseID].Lifes = 0;
 	else
