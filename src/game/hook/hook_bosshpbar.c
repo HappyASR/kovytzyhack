@@ -43,8 +43,12 @@ void DrawBossHPBar(int RoroUseID,RoroMem *RoroPtr) {
 	BossMem[RoroUseID].EnemyID = ((int)RoroPtr - 0x80cf1e) / 0x1b6;
 	if(RoroPtr->HP <= BOSS_HP_BAR_SIZE)
 		BossMem[RoroUseID].Lifes = 0;
-	else
-		BossMem[RoroUseID].Lifes = RoroPtr->HP/BOSS_HP_BAR_SIZE;
+	else {
+		if(RoroPtr->HP % BOSS_HP_BAR_SIZE ==0)
+			BossMem[RoroUseID].Lifes = RoroPtr->HP/BOSS_HP_BAR_SIZE -1;
+		else
+			BossMem[RoroUseID].Lifes = RoroPtr->HP/BOSS_HP_BAR_SIZE;
+	}
 	//Print(0,4,8+RoroUseID,0,0,"%X",BossMem[i].Lifes);
 
 	BossMem[RoroUseID].HPTiles[0] = 0;
@@ -139,7 +143,7 @@ void ChangeBossHpBar(int RoroUseID) {
 			DU16(BossMem[RoroUseID].HPTilesPtr) = 0xC55C + 9 - BossMem[RoroUseID].Bit;
 			BossMem[RoroUseID].HPChangeVal += 1;
 			HP = GetRoroPtrByEnemyID_00159bd6(BossMem[RoroUseID].EnemyID);
-			
+
 			if(BossMem[RoroUseID].HPBarUse)
 				Print(0,10,21-RoroUseID*2,1,0,"LIFE=%02d HP=%d    ",BossMem[RoroUseID].Lifes,DU16(HP +94) * 100);
 			else

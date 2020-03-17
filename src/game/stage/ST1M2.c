@@ -3,8 +3,10 @@
 #include <string.h>
 #include "../game_type.h"
 #include "../game_func.h"
-#include "../game_api.h"
 #include "stage.h"
+#include "../game_api.h"
+#include "../game_struct.h"
+#include "../hook/hook.h"
 
 struct RoroConfig {
 	int CMDPtr;//刷兵指针
@@ -187,6 +189,11 @@ void ST1M2F1() {
 	int PalID;
 	int i;
 	short OBJ;
+	
+		int EnemyID;
+	RoroMem *RoroPtr;
+	int rand;
+	int CMD;
 
 	FUN_0017ed26();
 	FUN_00159e3a();
@@ -210,6 +217,53 @@ void ST1M2F1() {
 	}
 	FUN_00195420();
 	FUN_00191bf4();
+
+
+		EnemyID = CreatEnemy_00155894();
+		BossMem[0].EnemyID = EnemyID;
+		rand=rand_00150e52(0x400);
+		rand=rand%4;
+		SetEnemyData_00156024(EnemyID,PU32(0x3d17ce)[rand],764,272,0,1,(int)(rand==1));
+		RoroPtr = GetRoroPtrByEnemyID_00159bd6(EnemyID);
+		FUN_0015a154(RoroPtr,0);
+		CMD = GetRoroActionDataPtr_001596de(RoroPtr,2,1);
+		SetRoroActionByActionDataPtr_00159864(RoroPtr,CMD);
+		RoroPtr->HP = 328;
+		RoroPtr->field_0xf5 = 60;
+		DrawBossInfo(RoroPtr);
+
+		EnemyID = CreatEnemy_00155894();
+		BossMem[1].EnemyID = EnemyID;
+		rand=rand_00150e52(0x400);
+		rand=rand%4;
+		SetEnemyData_00156024(EnemyID,PU32(0x3d17ce)[rand],764,272,0,1,(int)(rand==1));
+		RoroPtr = GetRoroPtrByEnemyID_00159bd6(EnemyID);
+		FUN_0015a154(RoroPtr,0);
+		CMD = GetRoroActionDataPtr_001596de(RoroPtr,2,1);
+		SetRoroActionByActionDataPtr_00159864(RoroPtr,CMD);
+		RoroPtr->HP = 328;
+		RoroPtr->field_0xf5 = 60;
+		DrawBossInfo(RoroPtr);
+
+		EnemyID = CreatEnemy_00155894();
+		BossMem[2].EnemyID = EnemyID;
+		rand=rand_00150e52(0x400);
+		rand=rand%4;
+		SetEnemyData_00156024(EnemyID,PU32(0x3d17ce)[rand],764,272,0,1,(int)(rand==1));
+		RoroPtr = GetRoroPtrByEnemyID_00159bd6(EnemyID);
+		FUN_0015a154(RoroPtr,0);
+		CMD = GetRoroActionDataPtr_001596de(RoroPtr,2,1);
+		SetRoroActionByActionDataPtr_00159864(RoroPtr,CMD);
+		RoroPtr->HP = 328;
+		RoroPtr->field_0xf5 = 60;
+		DrawBossInfo(RoroPtr);
+
+
+
+
+
+
+
 
 	//FUN_00191e7a(PU32(0x14384e),0);	//载入小兵配置
 	LoadRoro_00191e7a((int)&ST1M2RoroPtr,0);
