@@ -26,74 +26,28 @@ typedef struct CollDataElem CollDataElem, *PCollDataElem;
 
 typedef struct InputInsElem InputInsElem, *PInputInsElem;
 
-
-
-
-
-struct TileInfo {
-	char state;
-	char row;
-	char field_0x2;
-	char unk;
-	short change;
-	short *tileptr;
-};
-
-struct BossInfo {
-	int RoroStatus;
-	int RoroUseID;
-	int EnemyID;
-	int HeadOBJPtr[4];
-	int NameOBJPtr[4];
-	int DisplayID;
-	int DisplayID2;
-	int Lifes;
-	int HPBarUse;
-	int HPNowpos;
-	short HPChangeVal;
-	int HPTilesPtr;
-	int Bit;
-	short HPTiles[112];
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//rolemem 0x8114f4 438*4
-
-
-
-
-struct RoroMem {//0x80cf1e 438*2
+struct RoroMem {
     undefined field_0x0;
     undefined field_0x1;
-    short LiveTime;
+    undefined field_0x2;
+    undefined field_0x3;
     char Active;
     char FrameDelay;
     char unknow6;
     undefined field_0x7;
-    short x;
-    short y;
-    short Pic_x;
-    short Pic_y;
-    short field_0x10;
-    short field_0x12;
-    short x2;
-    short y2;
+    short p3;
+    short p4p5;
+    short unknow12;
+    short unknow14;
+    char field_0x10;
+    undefined field_0x11;
+    undefined field_0x12;
+    undefined field_0x13;
+    short _p3;
+    short _p4;
     short _p5;
-    char Calc_x;
-    char Calc_y;
+    char unknow26;
+    char unknow27;
     char unknow28;
     char ColorNum;
     int ScriptOffset;
@@ -497,7 +451,7 @@ struct Role_Struc {
     WORD * Coll_Index_Array;
     struct CollDataElem * Coll_Data_Array;
     LONG Base_Index;
-    WORD HP;
+    WORD Rorolife;
     WORD Unknow_off_50;
     WORD Unknow_off_52;
     WORD Unknow_off_54;

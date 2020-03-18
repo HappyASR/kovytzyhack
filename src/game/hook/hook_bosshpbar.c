@@ -38,7 +38,7 @@ int ChkBossUse() {
 }
 
 void DrawBossHPBar(int RoroUseID,RoroMem *RoroPtr) {
-	int i,j;
+	int i;
 
 	BossMem[RoroUseID].EnemyID = ((int)RoroPtr - 0x80cf1e) / 0x1b6;
 	if(RoroPtr->HP <= BOSS_HP_BAR_SIZE)
@@ -121,8 +121,62 @@ void DrawBossHPBar(int RoroUseID,RoroMem *RoroPtr) {
 
 }
 
+
+
+void ST5Zhangliao(){
+	int EnemyID;
+	RoroMem *RoroPtr;
+	int CMD;
+	
+		EnemyID = CreatEnemy_00155894();
+		BossMem[2].EnemyID = EnemyID;
+		SetEnemyData_00156024(EnemyID,0x368e82,270,390,0,0,0);
+		RoroPtr = GetRoroPtrByEnemyID_00159bd6(EnemyID);
+		DrawBossInfo(RoroPtr);
+
+		CMD = GetRoroActionDataPtr_001596de(RoroPtr,9,0);
+		SetRoroActionByActionDataPtr_00159864(RoroPtr,CMD);
+		if(GetPlayerCnt_0017f474()>2)
+			RoroPtr->HP = 720;
+		RoroPtr->isUnmatched = 1;
+		return;
+}
+
+void ST5ShaMoKe(){
+	int HP;
+	RoroMem *RoroPtr;
+	int CMD;
+	
+		DU32(0x81bd74) = CreatEnemy_00155894();
+		BossMem[2].EnemyID = DU32(0x81bd74);
+		SetEnemyData_00156024(DU32(0x81bd74),0x368e82,270,390,0,0,0);
+		RoroPtr = GetRoroPtrByEnemyID_00159bd6(DU32(0x81bd74));
+		
+
+		CMD = GetRoroActionDataPtr_001596de(RoroPtr,1,1);
+		SetRoroActionByActionDataPtr_00159864(RoroPtr,CMD);
+		
+		RoroPtr->HP = DU16(0x81bd70);
+
+		DrawBossInfo(RoroPtr);
+
+		return;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 void ChangeBossHpBar(int RoroUseID) {
-	int i,HP;
+	int i,RoroPtr;
 
 	if(BossMem[RoroUseID].HPChangeVal != 0) {
 		if(BossMem[RoroUseID].HPChangeVal<0) {
@@ -142,10 +196,10 @@ void ChangeBossHpBar(int RoroUseID) {
 			BossMem[RoroUseID].Bit += -1;
 			DU16(BossMem[RoroUseID].HPTilesPtr) = 0xC55C + 9 - BossMem[RoroUseID].Bit;
 			BossMem[RoroUseID].HPChangeVal += 1;
-			HP = GetRoroPtrByEnemyID_00159bd6(BossMem[RoroUseID].EnemyID);
+			RoroPtr = GetRoroPtrByEnemyID_00159bd6(BossMem[RoroUseID].EnemyID);
 
 			if(BossMem[RoroUseID].HPBarUse)
-				Print(0,10,21-RoroUseID*2,1,0,"LIFE=%02d HP=%d    ",BossMem[RoroUseID].Lifes,DU16(HP +94) * 100);
+				Print(0,10,21-RoroUseID*2,1,0,"LIFE=%02d HP=%d    ",BossMem[RoroUseID].Lifes,DU16(RoroPtr +94) * 100);
 			else
 				Print(0,10,21-RoroUseID*2,1,0,"                        ");
 
@@ -208,7 +262,7 @@ void DrawBossHead(int RoroUseID,RoroMem *RoroPtr) {
 void DrawBossInfo(RoroMem *RoroPtr) {
 	int RoroUseID;
 
-	if(DU8(0x81352b)!=2 && !(RoroPtr->field_0xd4 & 0x20)) {
+	if(DU8(0x81352b)!=2 && !(RoroPtr->Color & 0x20)) {
 		SetMotionTime_001a5708(99);
 		RoroUseID = ChkBossUse();
 		if(ChkBossUse()<2)
@@ -216,7 +270,7 @@ void DrawBossInfo(RoroMem *RoroPtr) {
 		RoroPtr->RoroUseID = RoroUseID;
 		DrawBossHead(RoroUseID,RoroPtr);
 		DrawBossHPBar(RoroUseID,RoroPtr);
-		RoroPtr->field_0xd4 ^= 0x20;
+		RoroPtr->Color ^= 0x20;
 	}
 	return;
 }
