@@ -35,7 +35,7 @@ void ST1M13Boss() {
 		FUN_0015a154(RoroPtr,0);
 		CMD = GetRoroActionDataPtr_001596de(RoroPtr,2,1);
 		SetRoroActionByActionDataPtr_00159864(RoroPtr,CMD);
-		RoroPtr->HP = 640;
+		RoroPtr->HP = 80;
 		RoroPtr->field_0xf5 = 60;
 		DrawBossInfo(RoroPtr);
 
@@ -48,7 +48,7 @@ void ST1M13Boss() {
 		FUN_0015a154(RoroPtr,0);
 		CMD = GetRoroActionDataPtr_001596de(RoroPtr,2,1);
 		SetRoroActionByActionDataPtr_00159864(RoroPtr,CMD);
-		RoroPtr->HP = 320;
+		RoroPtr->HP = 80;
 		RoroPtr->field_0xf5 = 60;
 		DrawBossInfo(RoroPtr);
 
@@ -61,7 +61,7 @@ void ST1M13Boss() {
 		FUN_0015a154(RoroPtr,0);
 		CMD = GetRoroActionDataPtr_001596de(RoroPtr,2,1);
 		SetRoroActionByActionDataPtr_00159864(RoroPtr,CMD);
-		RoroPtr->HP = 960;
+		RoroPtr->HP = 80;
 		RoroPtr->field_0xf5 = 60;
 		DrawBossInfo(RoroPtr);
 		

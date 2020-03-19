@@ -26,7 +26,23 @@ const u16 BossHPPal[8][16]= {
 
 
 
-
+void ClearBossInfo(int RoroUseID){
+	int i;
+	int off;
+	off = 0x904024 + (21+ RoroUseID * -2)*0x100;
+	for(i=0;i<128;i++){
+		
+		DU32(off) = 0;
+		off += 4;
+	}
+	FUN_0014cdb6(DU8(0x813ac8));
+	FUN_00154458(BossMem[RoroUseID].DisplayID);
+	FUN_00154458(BossMem[RoroUseID].DisplayID2);
+	
+	BossMem[RoroUseID].HPBarUse = 0;
+	BossMem[RoroUseID].RoroStatus = 0;
+	return;
+}
 
 int ChkBossUse() {
 	int i;
@@ -105,6 +121,7 @@ void DrawBossHPBar(int RoroUseID,RoroMem *RoroPtr) {
 	}
 
 	BossMem[RoroUseID].HPBarUse = 2;
+	BossMem[RoroUseID].RoroStatus = 2;
 	if(RoroPtr->HP%BOSS_HP_BAR_SIZE == 0)
 		BossMem[RoroUseID].HPNowpos =  BOSS_HP_BAR_SIZE/8;
 	else
@@ -123,7 +140,7 @@ void DrawBossHPBar(int RoroUseID,RoroMem *RoroPtr) {
 
 
 
-void ST5Zhangliao(){
+void ST5ZhangLiao(){
 	int EnemyID;
 	RoroMem *RoroPtr;
 	int CMD;
@@ -143,7 +160,7 @@ void ST5Zhangliao(){
 }
 
 void ST5ShaMoKe(){
-	int HP;
+
 	RoroMem *RoroPtr;
 	int CMD;
 	
@@ -176,7 +193,8 @@ void ST5ShaMoKe(){
 
 
 void ChangeBossHpBar(int RoroUseID) {
-	int i,RoroPtr;
+	int i;
+	RoroMem *RoroPtr;
 
 	if(BossMem[RoroUseID].HPChangeVal != 0) {
 		if(BossMem[RoroUseID].HPChangeVal<0) {
@@ -199,7 +217,7 @@ void ChangeBossHpBar(int RoroUseID) {
 			RoroPtr = GetRoroPtrByEnemyID_00159bd6(BossMem[RoroUseID].EnemyID);
 
 			if(BossMem[RoroUseID].HPBarUse)
-				Print(0,10,21-RoroUseID*2,1,0,"LIFE=%02d HP=%d    ",BossMem[RoroUseID].Lifes,DU16(RoroPtr +94) * 100);
+				Print(0,10,21-RoroUseID*2,1,0,"LIFE=%02d HP=%d    ",BossMem[RoroUseID].Lifes,RoroPtr->HP * 100);
 			else
 				Print(0,10,21-RoroUseID*2,1,0,"                        ");
 
