@@ -26,19 +26,19 @@ const u16 BossHPPal[8][16]= {
 
 
 
-void ClearBossInfo(int RoroUseID){
+void ClearBossInfo(int RoroUseID) {
 	int i;
 	int off;
 	off = 0x904024 + (21+ RoroUseID * -2)*0x100;
-	for(i=0;i<128;i++){
-		
+	for(i=0; i<128; i++) {
+
 		DU32(off) = 0;
 		off += 4;
 	}
 	FUN_0014cdb6(DU8(0x813ac8));
 	FUN_00154458(BossMem[RoroUseID].DisplayID);
 	FUN_00154458(BossMem[RoroUseID].DisplayID2);
-	
+
 	BossMem[RoroUseID].HPBarUse = 0;
 	BossMem[RoroUseID].RoroStatus = 0;
 	return;
@@ -140,58 +140,6 @@ void DrawBossHPBar(int RoroUseID,RoroMem *RoroPtr) {
 
 
 
-void ST5ZhangLiao(){
-	int EnemyID;
-	RoroMem *RoroPtr;
-	int CMD;
-	
-		EnemyID = CreatEnemy_00155894();
-		BossMem[2].EnemyID = EnemyID;
-		SetEnemyData_00156024(EnemyID,0x368e82,270,390,0,0,0);
-		RoroPtr = GetRoroPtrByEnemyID_00159bd6(EnemyID);
-		DrawBossInfo(RoroPtr);
-
-		CMD = GetRoroActionDataPtr_001596de(RoroPtr,9,0);
-		SetRoroActionByActionDataPtr_00159864(RoroPtr,CMD);
-		if(GetPlayerCnt_0017f474()>2)
-			RoroPtr->HP = 720;
-		RoroPtr->isUnmatched = 1;
-		return;
-}
-
-void ST5ShaMoKe(){
-
-	RoroMem *RoroPtr;
-	int CMD;
-	
-		DU32(0x81bd74) = CreatEnemy_00155894();
-		BossMem[2].EnemyID = DU32(0x81bd74);
-		SetEnemyData_00156024(DU32(0x81bd74),0x368e82,270,390,0,0,0);
-		RoroPtr = GetRoroPtrByEnemyID_00159bd6(DU32(0x81bd74));
-		
-
-		CMD = GetRoroActionDataPtr_001596de(RoroPtr,1,1);
-		SetRoroActionByActionDataPtr_00159864(RoroPtr,CMD);
-		
-		RoroPtr->HP = DU16(0x81bd70);
-
-		DrawBossInfo(RoroPtr);
-
-		return;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 void ChangeBossHpBar(int RoroUseID) {
 	int i;
 	RoroMem *RoroPtr;
@@ -216,14 +164,32 @@ void ChangeBossHpBar(int RoroUseID) {
 			BossMem[RoroUseID].HPChangeVal += 1;
 			RoroPtr = GetRoroPtrByEnemyID_00159bd6(BossMem[RoroUseID].EnemyID);
 
-			if(BossMem[RoroUseID].HPBarUse)
-				Print(0,10,21-RoroUseID*2,1,0,"LIFE=%02d HP=%d    ",BossMem[RoroUseID].Lifes,RoroPtr->HP * 100);
-			else
-				Print(0,10,21-RoroUseID*2,1,0,"                        ");
+		} else {
+			if(BossMem[RoroUseID].Bit ==8) {
+				BossMem[RoroUseID].Bit = 0;
+				BossMem[RoroUseID].HPTilesPtr += 4;
+				BossMem[RoroUseID].HPNowpos += 1;
+				if(BossMem[RoroUseID].HPNowpos == BOSS_HP_BAR_SIZE/8+1) {
+					BossMem[RoroUseID].Lifes += 1;
+					BossMem[RoroUseID].HPNowpos = 1;
+					BossMem[RoroUseID].HPTilesPtr -= BOSS_HP_BAR_SIZE/8;
+				}
+				BossMem[RoroUseID].Bit += 1;
+				DU16(BossMem[RoroUseID].HPTilesPtr) = 0xC55C + 9 - BossMem[RoroUseID].Bit;
+				BossMem[RoroUseID].HPChangeVal += -1;
+			}
+
+
+
 
 
 		}
+		if(BossMem[RoroUseID].HPBarUse)
+			Print(0,10,21-RoroUseID*2,1,0,"LIFE=%02d HP=%d    ",BossMem[RoroUseID].Lifes,RoroPtr->HP * 100);
+		else
+			Print(0,10,21-RoroUseID*2,1,0,"                        ");
 	}
+
 
 	return;
 }
