@@ -49,13 +49,7 @@ int ScreenUpdate() {
 	FUN_00198894();
 
 	/*以下是自己添加的内容*/
-	/*改变BOSS血条颜色*/
-	for(i=0; i<3; i++) {
 
-		if(BossMem[i].RoroStatus == 2) {
-			api_wpal_tile((i+2)*2,(int)&BossHPPal[BossMem[i].Lifes]);
-		}
-	}
 
 	/*添加内容结束*/
 	while ((DU8(0x81b259) & 0x10) != 0)

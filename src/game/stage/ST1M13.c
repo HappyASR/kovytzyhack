@@ -111,7 +111,7 @@ void ST1M13Boss() {
 		FUN_0015a154(RoroPtr,0);
 		CMD = GetRoroActionDataPtr_001596de(RoroPtr,2,1);
 		SetRoroActionByActionDataPtr_00159864(RoroPtr,CMD);
-		RoroPtr->HP = 80;
+		RoroPtr->HP = 2240;
 		RoroPtr->field_0xf5 = 60;
 		DrawBossInfo(RoroPtr);
 
