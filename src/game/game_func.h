@@ -1,4 +1,4 @@
-void arm_cmd(int CMD,int Param);
+#define gRoleMem ((RoroMem*)(0x8114f4))
 
 #define ChkKeyHold_0014f8ca	FUNC32(0x14f8ca)
 #define ChkDip_0014b168	FUNC32(0x14b168)
@@ -73,8 +73,30 @@ void arm_cmd(int CMD,int Param);
 #define RoroUse_0018f1c8 FUNC32(0x18f1c8)
 #define SetMotionTime_001a5708 FUNC32(0x1a5708)
 
+#define DrawLine_0014b5de FUNC32(0x14b5de)
+#define LoadMusicByGroupID_001952ca FUNC32(0x1952ca)
+#define SetSystemFontPal_00152b1e FUNC32(0x152b1e)
+#define PlayMusicByID_00195310 FUNC32(0x195310)
+#define PalFadeIn_0014db72 FUNC32(0x14db72)
+#define FreeOBJ_0016f6c2 FUNC32(0x16f6c2)
+#define GetDip_00198894 FUNC32(0x198894)
+#define ExecRoleAction_0017ef5c FUNC32(0x17ef5c)
+#define SetRoleAction_0017edd8 FUNC32(0x17edd8)
+#define SetOBJScript_00171ae8 FUNC32(0x171ae8)
+#define SetObjPicID_00171d16 FUNC32(0x171d16)
+#define SetObjPalID_0016fc3e FUNC32(0x16fc3e)
+#define SetObjBaseData_0016f762 FUNC32(0x16f762)
+#define CreatObj_0016f530 FUNC32(0x16f530)
+#define GetRoleActionOff_0017eee6 FUNC32(0x17eee6)
+
+
 
 //******************************************************
+#define FUN_0016166e FUNC32(0x16166e)
+#define FUN_00160c5e FUNC32(0x160c5e)
+#define FUN_0016006e FUNC32(0x16006e)
+#define FUN_00169798 FUNC32(0x169798)
+#define FUN_00194c0e FUNC32(0x194c0e)
 #define FUN_001dfb40 FUNC32(0x1dfb40)
 #define FUN_001dfc1c FUNC32(0x1dfc1c)
 #define FUN_001dfbb2 FUNC32(0x1dfbb2)

@@ -27,7 +27,34 @@ typedef struct CollDataElem CollDataElem, *PCollDataElem;
 typedef struct InputInsElem InputInsElem, *PInputInsElem;
 
 
+struct BG_ImgList {
+	u16 width;//图片宽
+	u16 height;//图片高
+	u32 TilesPtr;//拼图数据指针
+	u32 DisplayMode;//图片显示模式 翻转:0x40
+	u32 Fix00;
+};
 
+//图片包结构体
+struct BG_ImgPack {
+	u32 ImgPal;//图片包整体色盘,一般为0
+	u32 ImgListPtr;//图片列表指针
+	u16 ImgCnt;//图片数量 sizeof(ImgListPtr/10)
+};
+
+struct BG_ImgUseInfo {
+	s16 x;//图片坐标
+	s16 y;//图片坐标
+	u32 IMG;//图片包指针
+	u8 N;//图片ID
+	u8 Fix_09;
+	u16 Fix_0a;
+	u16 TileBase;//Tile起始编号
+	u16 Fix_0e;
+	u32 PalPtr;//色盘指针
+	u32 Fix_14;
+	u32 Fix_18;
+};
 
 
 struct TileInfo {
@@ -61,18 +88,23 @@ struct BossInfo {
 
 
 
+//BitMapLayer 1
+//0x81284e 
+//4 BitMapDataPtr
 
 
 
 
 
 
-
-
+//OBJMEM 0x80e322 156 * 80
 
 //rolemem 0x8114f4 438*4
 
-
+//PlayerMem 0x811bcc 732*4  +0x0A=Score  +0x2ba=level
+//PlayerRoleMem 0x8114f4 438*4
+//BossMem 0x813544 706*2
+//EnemyMem 0x80cf1e 438*8
 
 
 struct RoroMem {//0x80cf1e 438*2
@@ -82,7 +114,7 @@ struct RoroMem {//0x80cf1e 438*2
     char Active;
     char FrameDelay;
     char unknow6;
-    undefined field_0x7;
+    char field_0x7;
     short x;
     short y;
     short Pic_x;
@@ -257,7 +289,7 @@ struct RoroMem {//0x80cf1e 438*2
     undefined field_0xdb;
     undefined field_0xdc;
     undefined field_0xdd;
-    int unknow222;
+    int PlayerMemPtr;
     undefined field_0xe2;
     undefined field_0xe3;
     undefined field_0xe4;
@@ -304,18 +336,12 @@ struct RoroMem {//0x80cf1e 438*2
     char ZoomMax;
     undefined field_0x110;
     undefined field_0x111;
-    undefined field_0x112;
-    undefined field_0x113;
-    undefined field_0x114;
-    undefined field_0x115;
+    int ItemPtr;
     undefined field_0x116;
     undefined field_0x117;
     undefined field_0x118;
     undefined field_0x119;
-    undefined field_0x11a;
-    undefined field_0x11b;
-    undefined field_0x11c;
-    undefined field_0x11d;
+    int field_0x11a;
     undefined field_0x11e;
     undefined field_0x11f;
     undefined field_0x120;
@@ -344,9 +370,8 @@ struct RoroMem {//0x80cf1e 438*2
     undefined field_0x137;
     short Fix_z;
     undefined field_0x13a;
-    undefined field_0x13b;
-    undefined field_0x13c;
-    undefined field_0x13d;
+    char PowerCnt;
+    short PowerTime;
     undefined field_0x13e;
     undefined field_0x13f;
     char isUnmatched;
@@ -361,8 +386,7 @@ struct RoroMem {//0x80cf1e 438*2
     undefined field_0x149;
     undefined field_0x14a;
     undefined field_0x14b;
-    undefined field_0x14c;
-    undefined field_0x14d;
+    short field_0x14c;
     int unknow_334;
     undefined field_0x152;
     undefined field_0x153;
@@ -408,7 +432,7 @@ struct RoroMem {//0x80cf1e 438*2
     undefined field_0x17b;
     undefined field_0x17c;
     undefined field_0x17d;
-    undefined field_0x17e;
+    undefined UseItem;
     undefined field_0x17f;
     undefined field_0x180;
     undefined field_0x181;

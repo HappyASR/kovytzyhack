@@ -35,6 +35,18 @@ void api_delay(int frame) {
 	return;
 }
 
+
+
+
+int api_getarm(int CMD,int Param){
+	DU16(0x81b274) = ((DU16(0x81b270) >> 8) | DU16(0x81b270)) ^ Param;
+	DU16(0x500000)=DU16(0x81b274);
+	DU16(0x81b272) = ((DU16(0x81b270) >> 8) ^ CMD) | DU16(0x81b270);
+	DU16(0x500002)=DU16(0x81b272);
+
+	return FUN_0019acf8();
+}
+
 /*向ARM芯片发送命令*/
 //@@参数1 CMD 命令编号
 //@@参数2 Param 命令参数

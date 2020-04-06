@@ -49,7 +49,7 @@ int ST1M10F2() {
 
 
 
-	arm_cmd(0x6a,0x0f);
+	api_arm(0x6a,0x0f);
 	FUN_0019acf8();//这个是取ARM的返回值
 
 	switch(ST1M2_Fsm_0081b8fe) {

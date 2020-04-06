@@ -20,14 +20,14 @@ void PageSelectMode(int PlayerID) {
 	if (FUN_001988d6()) {
 		FUN_00173bb8();
 	}
-	arm_cmd(0x43,5);
+	api_arm(0x43,5);
 	FUN_001f6e84(0xf,0);
 	FUN_001f7008(0x14,0);
 	DU16(0x80e04e) = 0;
 	FUN_001952ca(1,5);//MUSIC初始化
 	PlayMusic_00195310(4);
 	DU8(0x803b87) = 1;
-	arm_cmd(0x43,2);
+	api_arm(0x43,2);
 	DU16(0x80e04c) = 1;
 	FUN_00151662(0,-1,0);
 	FUN_0015162c(1,0x31,0x24);

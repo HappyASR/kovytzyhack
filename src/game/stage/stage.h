@@ -1,34 +1,13 @@
-void arm_cmd(int CMD,int Param);
-void pause();
-void ST1M1F1();
-void ST1M2F1();
-int ST1M2F2();
-void ST1M2F3();
-void ST1M2F4(int param_1);
-void ST1M2F5();
-void ST1M2F6(int param_1);
 
-void ST1M4F1();
-int ST1M4F2();
-void ST1M4F3();
-void ST1M4F4(int param_1);
-void ST1M4F5();
-void ST1M4F6(int param_1);
 
-void ST1M6F1();
-int ST1M6F2();
-void ST1M6F3();
-void ST1M6F4(int param_1);
-void ST1M6F5();
-void ST1M6F6(int param_1);
 
-void ST1M13F1();
-int ST1M13F2();
-void ST1M13F3();
-void ST1M13F4(int param_1);
-void ST1M13F5();
-void ST1M13F6(int param_1);
-
+struct BitMapMaskInfo {
+	short width;//宽
+	short height;//高
+	char unknow1;//08
+	char unknow2;//08
+	int dataptr;//数据指针
+};
 
 typedef struct {
 	int MotionAmount;	//场景数量
@@ -56,3 +35,50 @@ typedef struct {
 	short Fix0;			//未知0
 
 } MotionFunction;
+
+extern void ST1M0F1();
+extern void ST1M0F1();
+extern int ST1M0F2();
+extern void ST1M0F3();
+extern void ST1M0F4(int param_1);
+extern void ST1M0F5();
+extern void ST1M0F6(int param_1);
+
+
+
+extern void ST1M2F1();
+extern int ST1M2F2();
+extern void ST1M2F3();
+extern void ST1M2F4(int param_1);
+extern void ST1M2F5();
+extern void ST1M2F6(int param_1);
+
+extern void ST1M4F1();
+extern int ST1M4F2();
+extern void ST1M4F3();
+extern void ST1M4F4(int param_1);
+extern void ST1M4F5();
+extern void ST1M4F6(int param_1);
+
+//ST1M6
+extern void ST1M6F1();
+extern int ST1M6F2();
+extern void ST1M6F3();
+extern void ST1M6F4(int param_1);
+extern void ST1M6F5();
+extern void ST1M6F6(int param_1);
+
+//ST1M13
+extern void ST1M13F1();
+extern int ST1M13F2();
+extern void ST1M13F3();
+extern void ST1M13F4(int param_1);
+extern void ST1M13F5();
+extern void ST1M13F6(int param_1);
+
+
+
+
+
+
+

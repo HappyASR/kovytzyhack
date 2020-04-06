@@ -2,9 +2,9 @@
 
 //hook_bosshpbar.c
 #define BOSS_HP_BAR_SIZE 320
-#define BOSS0_HP_PALID 4
-#define BOSS1_HP_PALID 6
-#define BOSS2_HP_PALID 8
+#define BOSS0_HP_PALID 10
+#define BOSS1_HP_PALID 10
+#define BOSS2_HP_PALID 10
 
 extern int ChkBossUse();
 extern void DrawBossHPBar(int RoroUseID,RoroMem *RoroPtr);

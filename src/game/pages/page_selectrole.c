@@ -76,8 +76,8 @@ void PageSelectRole(int PlayerID) {
 	int iVar11;
 
 
-	arm_cmd(0x93,0x100);
-	arm_cmd(0xb5,1);
+	api_arm(0x93,0x100);
+	api_arm(0xb5,1);
 	SetPal_0014c2da(2,26,0x2687ca);
 	SetPal_0014c2da(2,27,0x2686ca);
 	SetPal_0014c2da(2,31,0x2f2e62);
@@ -116,8 +116,8 @@ void PageSelectRole(int PlayerID) {
 	
 	
 	api_delay(0x14);
-	arm_cmd(0x75,0xf41);
-	arm_cmd(0xb6,2);
+	api_arm(0x75,0xf41);
+	api_arm(0xb6,2);
 
 
 
@@ -152,14 +152,14 @@ api_delay(0);
 
 	//api_delay(0);
 	// while(1) {
-	// arm_cmd(0x75,0x211e);
-	// arm_cmd(0x73,2);
+	// api_arm(0x75,0x211e);
+	// api_arm(0x73,2);
 	// if(!FUN_0019acf8())
 	// break;
 	// ScreenUpdate_0018c492();
 	// }
-	// arm_cmd(0x60,0x300);
-	// arm_cmd(0x5e,0);
+	// api_arm(0x60,0x300);
+	// api_arm(0x5e,0);
 
 	FUN_0016c8ee();
 	DU16(0x80e04a) = 0;
@@ -203,8 +203,8 @@ api_delay(0);
 				local_34[i] = 2;
 				FUN_0016b922( DU16(0x13c3e6 + local_3c[i]*0x22),DU16(0x13c3e8 + local_3c[i]*0x22),
 				              0x5e,0x1d,0x2fc292,0x96+i,0,0x2fc21e);
-				arm_cmd(0x53,(i&0x7f|0x60)<<7|1);
-				arm_cmd(0x51,0x2c3);
+				api_arm(0x53,(i&0x7f|0x60)<<7|1);
+				api_arm(0x51,0x2c3);
 				FUN_0014c276(2,i + 0x14,0x2fda40);
 				FUN_0014f2c4(3,(int)&ScreenUpdate_0018c492);
 				return;

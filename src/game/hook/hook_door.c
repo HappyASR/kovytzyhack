@@ -7,7 +7,21 @@
 #include "../game_struct.h"
 #include "hook.h"
 
-const u16 DoorTbl[200][4]= {
+struct DoorInfo {
+	u16 x;//X坐标
+	u16 y;//Y坐标
+	u16 w;//宽度
+	u16 h;//高度
+	u32 Func;//进门执行函数
+	u8  Go;//GO提示方向 0=上 1=左上
+	u8  ChkHasItem;//判断有没有某道具
+	u32 ChkScore;//判断分数
+	u8 ChkLevel;//判断角色等级
+	s8 ChkRole;//判断某角色是否存在
+	u8 ChkPlayers;//判断玩家数
+};
+
+const short DoorTbl[200][4]= {
 	{0, 0, 0, 0},
 	{0x3C8, 0x181, 0x46, 0x28},
 	{0x347, 0xF0, 0x24, 0x3A},
@@ -172,21 +186,106 @@ const u16 DoorTbl[200][4]= {
 	{0x30, 0x4E, 0x29, 0x40},
 	{0, 0x60, 0x46, 0xA0},
 	{0, 0xBA, 0x46, 0xA0},
-	{0x7AC, 0x60, 0x46, 0xA0}
 };
 
-struct DoorInfo {
-	u16 x;
-	u16 y;
-	u16 w;
-	u16 h;
-	int Func;
+
+void hook_UseItem(RoroMem *a1,char a2,int a3,int a4,int a5,int a6){
+	//FUNC32(DU32(0x2ecf8e + api_getarm(0xa5,a1->UseItem)*4))(a1,a3,a4,a5,a6);
+	//FUNC32(DU32(0x2ecf8e + api_getarm(0xa5,0x28)*4))(a1,a3,a4,a5,a6);
+	FUN_00194c0e(a1,a3,a4,a5);
+	
+	return;
+}
+
+
+
+const struct DoorInfo NewDoor[]= {
+	{0x347, 0xF0, 0x24, 0x3A,0x1dd13a,6,0,0,0,-1,0},//x,y,w,h,func,go,item,score,lv,role,players
+	{0x182, 0xF4, 0x50, 0x0c,0x1e0402,4,0,0,0,-1,0},//x,y,w,h,func,go,item,score,lv,role,players
 };
+
+
 
 static struct DoorInfo DoorList[2]= {
-	{0,0,0,0,0},
-	{0,0,0,0,0}
+
 };
+
+
+//检查道具条件
+int ChkItem(char ItemID) {
+	int i;
+	for(i=0;i<4;i++){
+		if(FUN_00161054(0x8114f4 + i * 438 ,ItemID))
+			return 1;
+	}
+	return 0;
+}
+//检查分数条件
+int ChkScore(int NeedScore) {
+	int i;
+	Print(0,6,8,0,0,"score=%d",DU32(0x811bcc+0*732+10));
+	for(i=0;i<4;i++){
+		if((gRoleMem[i].Active == 2) && DU32( 0x811bcc + i * 732 + 10)>=NeedScore){
+			Print(0,20,8,0,0,"%d",i);
+			return 1;
+		}
+	}
+	return 0;
+}
+//检查等级条件
+int ChkLevel(char NeedLevel) {
+	int i;
+	Print(0,6,9,0,0,"level=%d",DU16(0x811bcc+0*732+0x2ba));
+	for(i=0;i<4;i++){
+		if((gRoleMem[i].Active == 2) && DU16(0x811bcc+ i * 732 + 0x2ba)>=NeedLevel){
+			Print(0,20,9,0,0,"%d",i);
+			return 1;
+		}
+			
+	}
+	return 0;
+}
+//检查角色条件
+int ChkRole(char RoleID) {
+	int i;
+	Print(0,6,10,0,0,"RoleID=%d",gRoleMem[0].RoroRom->RoleId);
+	for(i=0;i<4;i++){
+		if(gRoleMem[i].RoroRom->RoleId == RoleID)
+			return 1;
+	}
+	return 0;
+}
+//检查角色条件
+int ChkPlayers(char Players) {
+	Print(0,6,11,0,0,"Players=%d",DU8(0x8129ac));
+	return (DU8(0x8129ac)>=Players);
+}
+
+
+//根据ID来创建门，可设置条件
+void SetDoorByID(int DoorID,int DoorAxilID) {
+
+	if(NewDoor[DoorAxilID].ChkHasItem > 0 && !ChkItem(NewDoor[DoorAxilID].ChkHasItem))//道具条件判断
+		return;
+	if(NewDoor[DoorAxilID].ChkScore > 0 && !ChkScore(NewDoor[DoorAxilID].ChkScore))//分数条件判断
+		return;
+	if(NewDoor[DoorAxilID].ChkLevel > 0 && !ChkLevel(NewDoor[DoorAxilID].ChkLevel))//等级条件判断
+		return;
+	if(NewDoor[DoorAxilID].ChkRole >= 0 && !ChkRole(NewDoor[DoorAxilID].ChkRole))//角色条件判断
+		return;
+	if(NewDoor[DoorAxilID].ChkPlayers > 0 && !ChkPlayers(NewDoor[DoorAxilID].ChkPlayers))//玩家数条件判断
+		return;	
+	Print(0,6,12,0,0,"setdoor ok");
+	DoorList[DoorID] = NewDoor[DoorAxilID];
+
+	GoMessage_00196142(DoorID,DoorList[DoorID].x,DoorList[DoorID].y,DoorList[DoorID].Go,0);
+	return;
+}
+
+
+
+
+
 
 /*设置一个门*/
 void api_setdoor(int DoorID,int DoorAxilID,int Func) {
@@ -219,7 +318,7 @@ void api_chkdoor(int PlayerMem) {
 	x = DU16(PlayerMem + 0x14);
 	y = DU16(PlayerMem + 0x16);
 	for(i=0; i<2; i++) {
-		//Print(0,4,i+6,0,0,"Door%d=%06X X=%03d Y=%03d W=%03d H=%03d",i+1,DoorList[i].Func,DoorList[i].x,DoorList[i].y,DoorList[i].w,DoorList[i].h);
+		//Print(0,4,i+13,0,0,"Door%d=%X X=%d Y=%d W=%d H=%d    ",i+1,DoorList[i].Func,DoorList[i].x,DoorList[i].y,DoorList[i].w,DoorList[i].h);
 		if(DoorList[i].Func!=0) {
 
 			if(DoorList[i].x <= x && DoorList[i].x+DoorList[i].w >= x) { //这里确定了x在范围内

@@ -27,7 +27,7 @@ void TestFunc() {
 
 	}
 
-	pause();
+	
 	return;
 }
 
@@ -41,7 +41,10 @@ void PageMainMenu() {
 	struct Menu MenuList[17];
 	/*菜单列表*/
 	MenuList[0].Str = (int *)"TEST KENSOU";
-	MenuList[0].Func = (int*)&TestFunc;
+	//MenuList[0].Func = (int*)0x1a4284;//背景图查看
+	//MenuList[0].Func = (int*)0x1a44b4;//背景OBJ图查看
+	//MenuList[0].Func = (int*)0x1893ba;//STAFF
+	MenuList[0].Func = (int*)0x1a52c2;
 	MenuList[1].Str = (int *)"TEST SOUND";
 	MenuList[1].Func = (int *)0x1a1276;
 	MenuList[2].Str = (int *)"TEST ROLE";

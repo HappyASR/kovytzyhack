@@ -7,14 +7,33 @@
 #include "../game_struct.h"
 #include "hook.h"
 
+#define P1_PRESS DU8(0x811be7)
+
+
+char GetCurItem(int PlayerID) {
+	return DU8(gRoleMem[PlayerID].ItemPtr +0x66 +DU8(gRoleMem[PlayerID].ItemPtr + 0x8c )*2);
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
 /*屏幕刷新*/
+
 int ScreenUpdate() {
 	int i;
 
+
 	FUN_0016a562();
+
 	FUN_0014c0aa();
 	FUN_00175848();
 	if (DU32(0x813526)) {
@@ -32,11 +51,8 @@ int ScreenUpdate() {
 	/*以下是自己添加的内容*/
 	/*改变BOSS血条颜色*/
 	for(i=0; i<3; i++) {
-		
-		if(!DU8(0x80cf1e + i*438 + 0xd4)){
-			BossMem[i].HPBarUse = 0;
-		}
-		if(BossMem[i].HPBarUse == 2) {
+
+		if(BossMem[i].RoroStatus == 2) {
 			api_wpal_tile((i+2)*2,(int)&BossHPPal[BossMem[i].Lifes]);
 		}
 	}
