@@ -13,23 +13,12 @@ set( CMAKE_SYSTEM_PROCESSOR     ARMV5 )
 # set( TC_PATH "" )
 
 # The toolchain prefix for all toolchain executables
-set( CROSS_COMPILE m68k-elf- )
+set( CROSS_COMPILE m68k-linux-gnu- )
 
-set( CMAKE_C_COMPILER ${TC_PATH}${CROSS_COMPILE}gcc.exe )  
-set( CMAKE_CXX_COMPILER ${TC_PATH}${CROSS_COMPILE}g++.exe ) 
-set( CMAKE_ASM_COMPILER ${TC_PATH}${CROSS_COMPILE}gcc.exe ) 
-
-# specify the cross compiler. We force the compiler so that CMake doesn't
-# attempt to build a simple test program as this will fail without us using
-# the -nostartfiles option on the command line
-CMAKE_FORCE_C_COMPILER( ${CMAKE_C_COMPILER} GNU )
-CMAKE_FORCE_CXX_COMPILER( ${CMAKE_CXX_COMPILER} GNU )
-
-# We must set the OBJCOPY setting into cache so that it's available to the
-# whole project. Otherwise, this does not get set into the CACHE and therefore
-# the build doesn't know what the OBJCOPY filepath is
-set( CMAKE_OBJCOPY      ${TC_PATH}${CROSS_COMPILE}objcopy.exe
-    CACHE FILEPATH "The toolchain objcopy command " FORCE )
+set( CMAKE_C_COMPILER ${TC_PATH}${CROSS_COMPILE}gcc )
+set( CMAKE_CXX_COMPILER ${TC_PATH}${CROSS_COMPILE}g++ )
+set( CMAKE_ASM_COMPILER ${TC_PATH}${CROSS_COMPILE}gcc )
+set( CMAKE_OBJCOPY      ${TC_PATH}${CROSS_COMPILE}objcopy )
 
 set( GAME_MAP "./game.map")
 set( ROM_OFFSET "0x380000")
