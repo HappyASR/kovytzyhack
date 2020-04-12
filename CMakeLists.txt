@@ -1,7 +1,7 @@
 # (c) 2016  XingXing(HappyASR#gmail.com)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.4)
-project(GAME NONE)
+project(GAME C ASM)
 set(CMAKE_SUPPRESS_REGENERATION 1)
 set(CMAKE_USE_RELATIVE_PATHS ON)
 file(GLOB_RECURSE c_source_files "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c")
