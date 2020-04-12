@@ -20,6 +20,8 @@ set( CMAKE_CXX_COMPILER ${TC_PATH}${CROSS_COMPILE}g++ )
 set( CMAKE_ASM_COMPILER ${TC_PATH}${CROSS_COMPILE}gcc )
 set( CMAKE_OBJCOPY      ${TC_PATH}${CROSS_COMPILE}objcopy )
 
+set( CMAKE_C_COMPILER_WORKS 1)
+
 set( GAME_MAP "./game.map")
 set( ROM_OFFSET "0x380000")
 set( ROM_INPUT "ytzy_v201cn_d.rom")
