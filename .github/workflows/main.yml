@@ -27,7 +27,19 @@ jobs:
       run: sudo apt-get update
     - name: Install gcc-m68k-linux-gnu
       run: sudo apt-get install gcc-m68k-linux-gnu
-
-    # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
+    - name: Build ROM
       run: cd build && cmake .. -DCMAKE_TOOLCHAIN_FILE=../pgm.cmake -G"Unix Makefiles" && make
+    - name: Zip ROM
+      run: cd .. && zip ytzy_v201cn_h.zip ytzy_v201cn_h.rom
+    - name: Deploy Windows release
+      uses: WebFreak001/deploy-nightly@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # automatically provided by github actions
+      with:
+        upload_url: https://uploads.github.com/repos/HappyASR/kovytzyhack/releases/25422975/assets{?name,label} # find out this value by opening https://api.github.com/repos/<owner>/<repo>/releases in your browser and copy the full "upload_url" value including the {?name,label} part
+        release_id: 25422975 # same as above (id can just be taken out the upload_url, it's used to find old releases)
+        asset_path: ./ytzy_v201cn_h.zip # path to archive to upload
+        asset_name: ytzy_v201cn-build-$$.zip # name to upload the release as, use $$ to insert date (YYYYMMDD) and 6 letter commit hash
+        asset_content_type: application/zip # required by GitHub API
+        max_releases: 7 # optional, if there are more releases than this matching the asset_name, the oldest ones are going to be deleted
+
