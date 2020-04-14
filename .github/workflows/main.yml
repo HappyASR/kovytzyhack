@@ -59,6 +59,8 @@ jobs:
     - name: Push to gitee
       run: |
         git clone https://gitee.com/hackrom/emu.git
+        git config --global user.email "HappyASR@gmail.com"
+        git config --global user.name "XingXing"
         gcc -o kovytzy util/kovytzy_dec.c
         ./kovytzy ytzy_v201cn_h.rom ytzy_v201cn.rom
         zip -u emu/kovytzyhack/roms/kovytzy.zip ytzy_v201cn.rom ytzy_v201cn.rom
