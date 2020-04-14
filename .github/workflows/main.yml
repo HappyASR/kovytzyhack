@@ -51,15 +51,12 @@ jobs:
         mkdir -p ~/.ssh
         ssh-keyscan -H gitee.com >> ~/.ssh/known_hosts
         echo ${SSH_KEY} > ~/.ssh/id_rsa
-        sed -i -e "s#\\\\n#\n#g" ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         echo ${SSH_KEY_PUB} > ~/.ssh/id_rsa.pub
         chmod 600 ~/.ssh/id_rsa.pub
 
     - name: Push to gitee
       run: |
-        cat ~/.ssh/id_rsa.pub
-        hexdump ~/.ssh/id_rsa.pub
         git config --global user.email "HappyASR@gmail.com"
         git config --global user.name "XingXing"
         git clone --depth 1 git@gitee.com:kensou/hackrom/emu.git
