@@ -57,6 +57,7 @@ jobs:
 
     - name: Push to gitee
       run: |
+        hexdump -C ~/.ssh/id_rsa
         git config --global user.email "HappyASR@gmail.com"
         git config --global user.name "XingXing"
         git clone --depth 1 git@gitee.com:kensou/hackrom/emu.git
