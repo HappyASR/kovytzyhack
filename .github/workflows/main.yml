@@ -63,6 +63,6 @@ jobs:
         ./kovytzy ytzy_v201cn_h.rom ytzy_v201cn.rom
         zip -u emu/kovytzyhack/roms/kovytzy.zip ytzy_v201cn.rom ytzy_v201cn.rom
         cd emu
-        git -am "auto build"
+        git commit -am "auto build"
         git push
     
