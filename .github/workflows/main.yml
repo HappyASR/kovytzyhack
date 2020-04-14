@@ -43,3 +43,22 @@ jobs:
         asset_content_type: application/zip # required by GitHub API
         max_releases: 7 # optional, if there are more releases than this matching the asset_name, the oldest ones are going to be deleted
 
+    - name: Set SSH Key
+      env: 
+        SSH_KEY: ${{ secrets.GITEE_SSH_KEY }}
+        SSH_KEY_PUB: ${{ secrets.GITEE_SSH_PUB }}
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan -H gitee.com >> ~/.ssh/known_hosts
+        echo ${SSH_KEY} > ~/.ssh/id_rsa
+        sed -i -e "s#\\\\n#\n#g" ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        echo ${SSH_KEY_PUB} > ~/.ssh/id_rsa.pub
+        chmod 600 ~/.ssh/id_rsa.pub
+  
+    - name: Push to gitee
+      run: |
+        git clone https://gitee.com/hackrom/emu.git
+        cd emu
+        ls -lR
+        #unzip 
